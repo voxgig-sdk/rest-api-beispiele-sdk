@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "product": {
+      "PRODUCT00": {
+        "id": "PRODUCT00",
+        "name": "s29",
+        "price": 42,
+        "self_link": "s2b"
+      },
+      "PRODUCT01": {
+        "id": "PRODUCT01",
+        "name": "s51",
+        "price": 82,
+        "self_link": "s53"
+      },
+      "PRODUCT02": {
+        "id": "PRODUCT02",
+        "name": "s79",
+        "price": 122,
+        "self_link": "s7b"
+      }
+    }
+  },
+  "new": {
+    "product": {
+      "product_ref01": {
+        "name": "sa1",
+        "price": 162,
+        "self_link": "sa3"
+      }
+    }
+  }
+}

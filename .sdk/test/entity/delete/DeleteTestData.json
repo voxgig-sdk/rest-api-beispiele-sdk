@@ -1,0 +1,23 @@
+{
+  "existing": {
+    "delete": {
+      "DELETE00": {
+        "product_id": "PRODUCT01",
+        "id": "DELETE00"
+      },
+      "DELETE01": {
+        "product_id": "PRODUCT01",
+        "id": "DELETE01"
+      },
+      "DELETE02": {
+        "product_id": "PRODUCT01",
+        "id": "DELETE02"
+      }
+    }
+  },
+  "new": {
+    "delete": {
+      "delete_ref01": {}
+    }
+  }
+}

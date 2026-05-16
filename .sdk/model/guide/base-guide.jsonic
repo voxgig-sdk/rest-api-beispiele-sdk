@@ -1,0 +1,27 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 2
+  metrics: count: method: 5
+
+  entity: delete: {
+    path: "/shop/v2/products/{productId}": {
+      rename: param: "productId": *"product_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: product: {
+    path: "/shop/v2/products/": {
+      op: create: method: *POST
+    }
+    path: "/shop/v2/products/{productId}": {
+      rename: param: "productId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: update: method: *PUT
+    }
+  }
+
+}

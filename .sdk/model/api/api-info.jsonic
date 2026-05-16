@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "predic8 GmbH"
+        url: "https://www.predic8.de"
+      }
+      description: "Dieses API bietet Beispiele für REST API Aufrufe, insbesondere für die HTTP Methoden POST, PUT und PATCH. Es dient als Anleitung, um Ressourcen zu erstellen, zu aktualisieren oder zu löschen, wobei ein Beispielservice verwendet wird. Fruit Shop Beispielservice für Produktverwaltung."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.predic8.de"
+        }
+      ]
+      title: "REST API Beispiele"
+      version: "2.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,23 @@
+# BasicDeleteFlow
+
+main: kit: flow: BasicDeleteFlow:
+{
+  entity: "delete",
+  kind: "basic",
+  name: "BasicDeleteFlow",
+  step: [
+    {
+      input: {
+        ref: "delete_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "delete01"
+      }
+
+      op: "remove"
+    }
+  ],
+  "key$": "BasicDeleteFlow"
+}

@@ -1,0 +1,62 @@
+# Entity: delete
+
+main: kit: entity: delete: {
+
+  alias: field: {}
+
+  name: "delete"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: 22
+                kind: "param"
+                name: "product_id"
+                orig: "product_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/shop/v2/products/{productId}"
+          parts: [
+            "shop"
+            "v2"
+            "products"
+            "{product_id}"
+          ]
+          rename: {
+            param: {
+              productId: "product_id"
+            }
+          }
+          select: {
+            exist: [
+              "product_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "product"
+      ]
+    ]
+  }
+
+
+
+}

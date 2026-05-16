@@ -1,0 +1,370 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "REST API Beispiele",
+    "description": "Dieses API bietet Beispiele für REST API Aufrufe, insbesondere für die HTTP Methoden POST, PUT und PATCH. Es dient als Anleitung, um Ressourcen zu erstellen, zu aktualisieren oder zu löschen, wobei ein Beispielservice verwendet wird. Fruit Shop Beispielservice für Produktverwaltung.",
+    "version": "2.0.0",
+    "contact": {
+      "name": "predic8 GmbH",
+      "url": "https://www.predic8.de"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.predic8.de",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/shop/v2/products/": {
+      "post": {
+        "summary": "Anlegen einer neuen Produkt-Ressource",
+        "description": "Mit einer POST Anfrage an die Container Ressource kann eine neue Produkt-Ressource angelegt werden. Die Daten für die neu anzulegende Ressource werden im Body der HTTP Anfrage übertragen.",
+        "operationId": "createProduct",
+        "tags": [
+          "Products"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductInput"
+              },
+              "example": {
+                "name": "Wild-berries",
+                "price": 4.99
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created - Produkt wurde erfolgreich angelegt",
+            "headers": {
+              "Location": {
+                "description": "URI der neu angelegten Ressource",
+                "schema": {
+                  "type": "string",
+                  "example": "/shop/v2/products/22"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                },
+                "example": {
+                  "id": 22,
+                  "name": "Wild-berries",
+                  "price": 4.99,
+                  "self_link": "/shop/v2/products/22"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Ungültige Eingabedaten"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/shop/v2/products/{productId}": {
+      "get": {
+        "summary": "Abrufen einer Produkt-Ressource",
+        "description": "Mit einem GET Aufruf kann eine Repräsentation des Produktes abgerufen werden.",
+        "operationId": "getProduct",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "Die ID des Produkts",
+            "schema": {
+              "type": "integer",
+              "example": 22
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Produkt erfolgreich abgerufen",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                },
+                "example": {
+                  "id": 22,
+                  "name": "Wild-berries",
+                  "price": 4.99,
+                  "self_link": "/shop/v2/products/22"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Produkt nicht gefunden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "summary": "Vollständiges Überschreiben einer Produkt-Ressource",
+        "description": "Mit PUT wird für gewöhnlich eine Ressource mit der Repräsentation im Request überschrieben. Die gesamte Ressource wird durch die neuen Daten ersetzt.",
+        "operationId": "updateProduct",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "Die ID des Produkts",
+            "schema": {
+              "type": "integer",
+              "example": 22
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductInput"
+              },
+              "example": {
+                "name": "Wild-berries",
+                "price": 2.99
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK - Produkt wurde erfolgreich aktualisiert",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                },
+                "example": {
+                  "id": 22,
+                  "name": "Wild-berries",
+                  "price": 2.99,
+                  "self_link": "/shop/v2/products/22"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Ungültige Eingabedaten"
+          },
+          "404": {
+            "description": "Not Found - Produkt nicht gefunden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Teilweise Aktualisierung einer Produkt-Ressource",
+        "description": "Mit der HTTP Methode PATCH können einzelne Eigenschaften einer Ressource gezielt manipuliert werden. Es müssen nur die zu ändernden Felder übertragen werden.",
+        "operationId": "partialUpdateProduct",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "Die ID des Produkts",
+            "schema": {
+              "type": "integer",
+              "example": 22
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductPatch"
+              },
+              "example": {
+                "price": 1.99
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK - Produkt wurde erfolgreich teilweise aktualisiert",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Product"
+                },
+                "example": {
+                  "id": 22,
+                  "name": "Wild-berries",
+                  "price": 1.99
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Ungültige Eingabedaten"
+          },
+          "404": {
+            "description": "Not Found - Produkt nicht gefunden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Löschen einer Produkt-Ressource",
+        "description": "Mit der DELETE Methode können Ressourcen gelöscht werden.",
+        "operationId": "deleteProduct",
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "Die ID des Produkts",
+            "schema": {
+              "type": "integer",
+              "example": 22
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK - Produkt wurde erfolgreich gelöscht",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeleteResponse"
+                },
+                "example": {
+                  "success": "Deleted"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found - Produkt nicht gefunden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProductInput": {
+        "type": "object",
+        "required": [
+          "name",
+          "price"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name des Produkts",
+            "example": "Wild-berries"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "Preis des Produkts",
+            "example": 4.99,
+            "minimum": 0
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Eindeutige ID des Produkts",
+            "example": 22
+          },
+          "name": {
+            "type": "string",
+            "description": "Name des Produkts",
+            "example": "Wild-berries"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "Preis des Produkts",
+            "example": 4.99,
+            "minimum": 0
+          },
+          "self_link": {
+            "type": "string",
+            "description": "Selbstreferenz-Link zur Ressource",
+            "example": "/shop/v2/products/22"
+          }
+        }
+      },
+      "ProductPatch": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name des Produkts",
+            "example": "Wild-berries"
+          },
+          "price": {
+            "type": "number",
+            "format": "double",
+            "description": "Preis des Produkts",
+            "example": 1.99,
+            "minimum": 0
+          }
+        },
+        "description": "Objekt für partielle Aktualisierung. Nur die zu ändernden Felder müssen angegeben werden."
+      },
+      "DeleteResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "string",
+            "description": "Bestätigung der erfolgreichen Löschung",
+            "example": "Deleted"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Operationen für die Verwaltung von Produkten im Fruit Shop"
+    }
+  ]
+}
