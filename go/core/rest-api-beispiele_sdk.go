@@ -3,7 +3,7 @@ package core
 import (
 	"fmt"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/rest-api-beispiele-sdk/go/utility/struct"
 )
 
 type RestApiBeispieleSDK struct {

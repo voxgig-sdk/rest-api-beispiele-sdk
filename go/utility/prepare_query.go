@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/rest-api-beispiele-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/rest-api-beispiele-sdk/core"
+	"github.com/voxgig-sdk/rest-api-beispiele-sdk/go/core"
 )
 
 func prepareQueryUtil(ctx *core.Context) map[string]any {

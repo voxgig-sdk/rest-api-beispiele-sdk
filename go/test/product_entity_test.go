@@ -10,10 +10,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/rest-api-beispiele-sdk"
-	"github.com/voxgig-sdk/rest-api-beispiele-sdk/core"
+	sdk "github.com/voxgig-sdk/rest-api-beispiele-sdk/go"
+	"github.com/voxgig-sdk/rest-api-beispiele-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/rest-api-beispiele-sdk/go/utility/struct"
 )
 
 func TestProductEntity(t *testing.T) {

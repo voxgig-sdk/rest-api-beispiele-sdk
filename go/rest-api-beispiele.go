@@ -1,10 +1,10 @@
 package voxgigrestapibeispielesdk
 
 import (
-	"github.com/voxgig-sdk/rest-api-beispiele-sdk/core"
-	"github.com/voxgig-sdk/rest-api-beispiele-sdk/entity"
-	"github.com/voxgig-sdk/rest-api-beispiele-sdk/feature"
-	_ "github.com/voxgig-sdk/rest-api-beispiele-sdk/utility"
+	"github.com/voxgig-sdk/rest-api-beispiele-sdk/go/core"
+	"github.com/voxgig-sdk/rest-api-beispiele-sdk/go/entity"
+	"github.com/voxgig-sdk/rest-api-beispiele-sdk/go/feature"
+	_ "github.com/voxgig-sdk/rest-api-beispiele-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
