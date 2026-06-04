@@ -26,9 +26,7 @@ loading a specific record.
 ```lua
 local sdk = require("rest-api-beispiele_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("REST-API-BEISPIELE_APIKEY"),
-})
+local client = sdk.new({})
 ```
 
 ### 4. Create, update, and remove
@@ -117,7 +115,6 @@ Create a `.env.local` file at the project root:
 
 ```
 REST-API-BEISPIELE_TEST_LIVE=TRUE
-REST-API-BEISPIELE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -140,7 +137,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

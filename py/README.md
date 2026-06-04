@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from restapibeispiele_sdk import RestApiBeispieleSDK
 
-client = RestApiBeispieleSDK({
-    "apikey": os.environ.get("REST-API-BEISPIELE_APIKEY"),
-})
+client = RestApiBeispieleSDK({})
 ```
 
 ### 4. Create, update, and remove
@@ -115,7 +112,6 @@ Create a `.env.local` file at the project root:
 
 ```
 REST-API-BEISPIELE_TEST_LIVE=TRUE
-REST-API-BEISPIELE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -139,7 +135,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

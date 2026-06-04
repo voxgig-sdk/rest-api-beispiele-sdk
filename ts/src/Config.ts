@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.predic8.de',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },

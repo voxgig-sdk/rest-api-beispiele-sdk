@@ -17,8 +17,24 @@ main: {
       ]
       title: "REST API Beispiele"
       version: "2.0.0"
+      tagline: "Practice REST verbs against a public Shop API designed for POST, PUT, PATCH, and DELETE experiments"
+      homepage: "https://api.predic8.de"
+      docs_url: "https://api.predic8.de"
+      about_md: `REST API Beispiele is a learning sandbox published by [predic8](https://api.predic8.de) under the path \`/shop/v2/\`. It exists so developers can try out REST operations against a real, publicly reachable service rather than mocking one locally.
+
+The predic8 description invites users to "manipulate the resources using the POST, PUT and DELETE methods", and the catalogue listing on [freepublicapis.com](https://freepublicapis.com/rest-api-beispiele) highlights the same focus on POST, PUT, and PATCH calls. The example domain is a small product shop: create a product with a name and price, update it, then delete it.
+
+What you get from the API:
+- A writable product resource collection mounted at \`/shop/v2/products/\`
+- Concrete examples of \`POST\` (insert), \`PUT\` (replace), \`PATCH\` (partial update), and \`DELETE\` (remove) against the same resource
+- A stable target for tutorials, workshop exercises, and HTTP-client smoke tests
+
+Operational notes: the service is reported as having no required authentication, and the freepublicapis catalogue notes that CORS is disabled, so browser-based clients may need a proxy. Because the data store is shared and writable, anything you create is visible to other learners and may be reset.`
+      entity_desc: {
+        delete: "Grouping for delete-style operations demonstrated against shop resources, illustrating how `DELETE` removes an item from the collection."
+        product: "A shop product resource (name, price) exposed under `/shop/v2/products/` — the main target for POST/PUT/PATCH/DELETE practice."
+      }
+      auth: false
     }
   }
-}
-
 }

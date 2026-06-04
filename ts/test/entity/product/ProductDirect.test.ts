@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'RESTAPIBEISPIELE_TEST_PRODUCT_ENTID': {},
     'RESTAPIBEISPIELE_TEST_LIVE': 'FALSE',
-    'RESTAPIBEISPIELE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.RESTAPIBEISPIELE_TEST_LIVE
 
   if (live) {
     const client = new RestApiBeispieleSDK({
-      apikey: env.RESTAPIBEISPIELE_APIKEY,
     })
 
     let idmap: any = env['RESTAPIBEISPIELE_TEST_PRODUCT_ENTID']
