@@ -10,13 +10,13 @@ The Ruby SDK for the RestApiBeispiele API — an entity-oriented client using id
 
 ## Install
 ```bash
-gem install rest-api-beispiele-sdk
+gem install voxgig-sdk-rest-api-beispiele
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "rest-api-beispiele-sdk"
+gem "voxgig-sdk-rest-api-beispiele"
 ```
 
 Then run:

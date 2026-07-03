@@ -10,7 +10,7 @@ The Python SDK for the RestApiBeispiele API — an entity-oriented client follow
 
 ## Install
 ```bash
-pip install rest-api-beispiele-sdk
+pip install voxgig-sdk-rest-api-beispiele
 ```
 
 Or install from source:

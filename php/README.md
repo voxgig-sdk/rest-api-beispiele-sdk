@@ -10,7 +10,7 @@ The PHP SDK for the RestApiBeispiele API — an entity-oriented client using PHP
 
 ## Install
 ```bash
-composer require voxgig/rest-api-beispiele-sdk
+composer require voxgig-sdk/rest-api-beispiele
 ```
 
 

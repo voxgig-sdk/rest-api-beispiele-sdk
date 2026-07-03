@@ -10,7 +10,7 @@ The TypeScript SDK for the RestApiBeispiele API — a type-safe, entity-oriented
 
 ## Install
 ```bash
-npm install rest-api-beispiele
+npm install @voxgig-sdk/rest-api-beispiele
 ```
 ## Tutorial: your first API call
 
