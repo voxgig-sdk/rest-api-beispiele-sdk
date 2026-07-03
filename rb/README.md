@@ -1,6 +1,11 @@
 # RestApiBeispiele Ruby SDK
 
-The Ruby SDK for the RestApiBeispiele API. Provides an entity-oriented interface using idiomatic Ruby conventions.
+
+
+The Ruby SDK for the RestApiBeispiele API — an entity-oriented client using idiomatic Ruby conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -31,14 +36,16 @@ loading a specific record.
 ```ruby
 require_relative "RestApiBeispiele_sdk"
 
-client = RestApiBeispieleSDK.new({})
+client = RestApiBeispieleSDK.new({
+  "apikey" => ENV["REST-API-BEISPIELE_APIKEY"],
+})
 ```
 
 ### 4. Create, update, and remove
 
 ```ruby
 # Remove
-client.Delete(nil).remove({ "id" => created["id"] }, nil)
+client.Delete().remove({ "id" => created["id"] })
 ```
 
 
@@ -82,11 +89,9 @@ puts fetchdef["headers"]
 Create a mock client for unit testing — no server required:
 
 ```ruby
-client = RestApiBeispieleSDK.test(nil, nil)
+client = RestApiBeispieleSDK.test
 
-result, err = client.RestApiBeispiele(nil).load(
-  { "id" => "test01" }, nil
-)
+result, err = client.RestApiBeispiele().load({ "id" => "test01" })
 # result contains mock response data
 ```
 
@@ -118,6 +123,7 @@ Create a `.env.local` file at the project root:
 
 ```
 REST-API-BEISPIELE_TEST_LIVE=TRUE
+REST-API-BEISPIELE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -140,6 +146,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

@@ -112,6 +112,7 @@ function basicSetup(extra?: any) {
     'REST_API_BEISPIELE_TEST_DELETE_ENTID': idmap,
     'REST_API_BEISPIELE_TEST_LIVE': 'FALSE',
     'REST_API_BEISPIELE_TEST_EXPLAIN': 'FALSE',
+    'REST_API_BEISPIELE_APIKEY': 'NONE',
   })
 
   idmap = env['REST_API_BEISPIELE_TEST_DELETE_ENTID']
@@ -121,6 +122,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new RestApiBeispieleSDK(merge([
       {
+        apikey: env.REST_API_BEISPIELE_APIKEY,
       },
       extra
     ]))

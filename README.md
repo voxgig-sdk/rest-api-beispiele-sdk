@@ -1,21 +1,8 @@
 # RestApiBeispiele SDK
 
-Practice REST verbs against a public Shop API designed for POST, PUT, PATCH, and DELETE experiments
+REST API Beispiele client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About REST API Beispiele
-
-REST API Beispiele is a learning sandbox published by [predic8](https://api.predic8.de) under the path `/shop/v2/`. It exists so developers can try out REST operations against a real, publicly reachable service rather than mocking one locally.
-
-The predic8 description invites users to "manipulate the resources using the POST, PUT and DELETE methods", and the catalogue listing on [freepublicapis.com](https://freepublicapis.com/rest-api-beispiele) highlights the same focus on POST, PUT, and PATCH calls. The example domain is a small product shop: create a product with a name and price, update it, then delete it.
-
-What you get from the API:
-- A writable product resource collection mounted at `/shop/v2/products/`
-- Concrete examples of `POST` (insert), `PUT` (replace), `PATCH` (partial update), and `DELETE` (remove) against the same resource
-- A stable target for tutorials, workshop exercises, and HTTP-client smoke tests
-
-Operational notes: the service is reported as having no required authentication, and the freepublicapis catalogue notes that CORS is disabled, so browser-based clients may need a proxy. Because the data store is shared and writable, anything you create is visible to other learners and may be reset.
 
 ## Try it
 
@@ -49,27 +36,28 @@ gem install rest-api-beispiele-sdk
 luarocks install rest-api-beispiele-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { RestApiBeispieleSDK } from 'rest-api-beispiele'
 
-const client = new RestApiBeispieleSDK({})
+const client = new RestApiBeispieleSDK({
+  apikey: process.env.REST-API-BEISPIELE_APIKEY,
+})
 
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,8 +87,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Delete** | Grouping for delete-style operations demonstrated against shop resources, illustrating how `DELETE` removes an item from the collection. | `/shop/v2/products/{productId}` |
-| **Product** | A shop product resource (name, price) exposed under `/shop/v2/products/` — the main target for POST/PUT/PATCH/DELETE practice. | `/shop/v2/products/` |
+| **Delete** |  | `/shop/v2/products/{productId}` |
+| **Product** |  | `/shop/v2/products/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -110,9 +98,12 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from restapibeispiele_sdk import RestApiBeispieleSDK
 
-client = RestApiBeispieleSDK({})
+client = RestApiBeispieleSDK({
+    "apikey": os.environ.get("REST-API-BEISPIELE_APIKEY"),
+})
 
 ```
 
@@ -122,7 +113,9 @@ client = RestApiBeispieleSDK({})
 <?php
 require_once 'restapibeispiele_sdk.php';
 
-$client = new RestApiBeispieleSDK([]);
+$client = new RestApiBeispieleSDK([
+    "apikey" => getenv("REST-API-BEISPIELE_APIKEY"),
+]);
 
 ```
 
@@ -131,7 +124,9 @@ $client = new RestApiBeispieleSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/rest-api-beispiele-sdk/go"
 
-client := sdk.NewRestApiBeispieleSDK(map[string]any{})
+client := sdk.NewRestApiBeispieleSDK(map[string]any{
+    "apikey": os.Getenv("REST-API-BEISPIELE_APIKEY"),
+})
 
 ```
 
@@ -140,7 +135,9 @@ client := sdk.NewRestApiBeispieleSDK(map[string]any{})
 ```ruby
 require_relative "RestApiBeispiele_sdk"
 
-client = RestApiBeispieleSDK.new({})
+client = RestApiBeispieleSDK.new({
+  "apikey" => ENV["REST-API-BEISPIELE_APIKEY"],
+})
 
 ```
 
@@ -149,7 +146,9 @@ client = RestApiBeispieleSDK.new({})
 ```lua
 local sdk = require("rest-api-beispiele_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("REST-API-BEISPIELE_APIKEY"),
+})
 
 ```
 
@@ -169,25 +168,21 @@ const result = await client.Delete().load({ id: 'test01' })
 ### Python
 
 ```python
-client = RestApiBeispieleSDK.test(None, None)
-result, err = client.Delete(None).load(
-    {"id": "test01"}, None
-)
+client = RestApiBeispieleSDK.test()
+result, err = client.Delete().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = RestApiBeispieleSDK::test(null, null);
-[$result, $err] = $client->Delete(null)->load(
-    ["id" => "test01"], null
-);
+$client = RestApiBeispieleSDK::test();
+[$result, $err] = $client->Delete()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Delete(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -196,19 +191,15 @@ result, err := client.Delete(nil).Load(
 ### Ruby
 
 ```ruby
-client = RestApiBeispieleSDK.test(nil, nil)
-result, err = client.Delete(nil).load(
-  { "id" => "test01" }, nil
-)
+client = RestApiBeispieleSDK.test
+result, err = client.Delete().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Delete(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Delete():load({ id = "test01" })
 ```
 
 ## How it works
@@ -312,10 +303,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the REST API Beispiele
-
-- Upstream: [https://api.predic8.de](https://api.predic8.de)
 
 ---
 

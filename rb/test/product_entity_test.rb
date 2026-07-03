@@ -104,6 +104,7 @@ def product_basic_setup(extra)
     "RESTAPIBEISPIELE_TEST_PRODUCT_ENTID" => idmap,
     "RESTAPIBEISPIELE_TEST_LIVE" => "FALSE",
     "RESTAPIBEISPIELE_TEST_EXPLAIN" => "FALSE",
+    "RESTAPIBEISPIELE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -115,6 +116,7 @@ def product_basic_setup(extra)
   if env["RESTAPIBEISPIELE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["RESTAPIBEISPIELE_APIKEY"],
       },
       extra || {},
     ])

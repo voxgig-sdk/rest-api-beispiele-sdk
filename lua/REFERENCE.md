@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -98,7 +98,7 @@ local delete = client:Delete(nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:Delete(nil):remove({ id = "delete_id" }, nil)
+local result, err = client:Delete():remove({ id = "delete_id" })
 ```
 
 ### Common Methods
@@ -162,8 +162,8 @@ local product = client:Product(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:Product(nil):create({
-}, nil)
+local result, err = client:Product():create({
+})
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -171,7 +171,7 @@ local result, err = client:Product(nil):create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Product(nil):load({ id = "product_id" }, nil)
+local result, err = client:Product():load({ id = "product_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -179,10 +179,10 @@ local result, err = client:Product(nil):load({ id = "product_id" }, nil)
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:Product(nil):update({
+local result, err = client:Product():update({
   id = "product_id",
   -- Fields to update
-}, nil)
+})
 ```
 
 ### Common Methods

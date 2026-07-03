@@ -110,12 +110,14 @@ func productDirectSetup(mockres any) *productDirectSetupResult {
 	env := envOverride(map[string]any{
 		"RESTAPIBEISPIELE_TEST_PRODUCT_ENTID": map[string]any{},
 		"RESTAPIBEISPIELE_TEST_LIVE":    "FALSE",
+		"RESTAPIBEISPIELE_APIKEY":       "NONE",
 	})
 
 	live := env["RESTAPIBEISPIELE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["RESTAPIBEISPIELE_APIKEY"],
 		}
 		client := sdk.NewRestApiBeispieleSDK(mergedOpts)
 

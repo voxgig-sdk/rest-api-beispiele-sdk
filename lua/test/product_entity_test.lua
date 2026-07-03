@@ -113,6 +113,7 @@ function product_basic_setup(extra)
     ["RESTAPIBEISPIELE_TEST_PRODUCT_ENTID"] = idmap,
     ["RESTAPIBEISPIELE_TEST_LIVE"] = "FALSE",
     ["RESTAPIBEISPIELE_TEST_EXPLAIN"] = "FALSE",
+    ["RESTAPIBEISPIELE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -124,6 +125,7 @@ function product_basic_setup(extra)
   if env["RESTAPIBEISPIELE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["RESTAPIBEISPIELE_APIKEY"],
       },
       extra or {},
     })

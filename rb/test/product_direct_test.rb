@@ -69,12 +69,14 @@ def product_direct_setup(mockres)
   env = Runner.env_override({
     "RESTAPIBEISPIELE_TEST_PRODUCT_ENTID" => {},
     "RESTAPIBEISPIELE_TEST_LIVE" => "FALSE",
+    "RESTAPIBEISPIELE_APIKEY" => "NONE",
   })
 
   live = env["RESTAPIBEISPIELE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["RESTAPIBEISPIELE_APIKEY"],
     }
     client = RestApiBeispieleSDK.new(merged_opts)
     return {
