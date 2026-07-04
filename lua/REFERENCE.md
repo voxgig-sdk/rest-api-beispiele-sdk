@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## DeleteEntity
 
 ```lua
-local delete = client:Delete(nil)
+local delete = client:delete(nil)
 ```
 
 ### Operations
@@ -98,7 +97,7 @@ local delete = client:Delete(nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:Delete():remove({ id = "delete_id" })
+local result, err = client:delete():remove({ id = "delete_id" })
 ```
 
 ### Common Methods
@@ -134,7 +133,7 @@ Return the entity name.
 ## ProductEntity
 
 ```lua
-local product = client:Product(nil)
+local product = client:product(nil)
 ```
 
 ### Fields
@@ -162,7 +161,7 @@ local product = client:Product(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:Product():create({
+local result, err = client:product():create({
 })
 ```
 
@@ -171,7 +170,7 @@ local result, err = client:Product():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Product():load({ id = "product_id" })
+local result, err = client:product():load({ id = "product_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -179,7 +178,7 @@ local result, err = client:Product():load({ id = "product_id" })
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:Product():update({
+local result, err = client:product():update({
   id = "product_id",
   -- Fields to update
 })

@@ -20,9 +20,6 @@ class RestApiBeispieleConfig
             ],
             "options" => [
                 "base" => "https://api.predic8.de",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -52,6 +49,7 @@ class RestApiBeispieleConfig
                         'orig' => 'product_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -184,6 +182,7 @@ class RestApiBeispieleConfig
                         'orig' => 'product_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -276,6 +275,7 @@ class RestApiBeispieleConfig
                         'orig' => 'product_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

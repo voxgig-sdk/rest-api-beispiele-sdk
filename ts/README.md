@@ -9,9 +9,12 @@ The TypeScript SDK for the RestApiBeispiele API — a type-safe, entity-oriented
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/rest-api-beispiele
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,18 +23,16 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { RestApiBeispieleSDK } from 'rest-api-beispiele'
+import { RestApiBeispieleSDK } from '@voxgig-sdk/rest-api-beispiele'
 
-const client = new RestApiBeispieleSDK({
-  apikey: process.env.REST-API-BEISPIELE_APIKEY,
-})
+const client = new RestApiBeispieleSDK()
 ```
 
 ### 4. Create, update, and remove
 
 ```ts
 // Remove
-const removed = await client.Delete().remove({
+const removed = await client.delete.remove({
   id: created.data.id,
 })
 ```
@@ -78,7 +79,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RestApiBeispieleSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.delete.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -86,7 +87,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new RestApiBeispieleSDK({ apikey: '...' })
+const client = new RestApiBeispieleSDK()
 const testClient = client.tester()
 ```
 
@@ -95,7 +96,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.delete
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -122,7 +123,6 @@ const logger = {
 }
 
 const client = new RestApiBeispieleSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -132,8 +132,7 @@ const client = new RestApiBeispieleSDK({
 Create a `.env.local` file at the project root:
 
 ```
-REST-API-BEISPIELE_TEST_LIVE=TRUE
-REST-API-BEISPIELE_APIKEY=<your-key>
+REST_API_BEISPIELE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -151,7 +150,6 @@ cd ts && npm test
 
 ```ts
 new RestApiBeispieleSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -162,7 +160,6 @@ new RestApiBeispieleSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -278,7 +275,7 @@ API path: `/shop/v2/products/`
 
 ### Delete
 
-Create an instance: `const delete = client.Delete()`
+Create an instance: `const delete = client.delete`
 
 #### Operations
 
@@ -289,7 +286,7 @@ Create an instance: `const delete = client.Delete()`
 
 ### Product
 
-Create an instance: `const product = client.Product()`
+Create an instance: `const product = client.product`
 
 #### Operations
 
@@ -311,13 +308,13 @@ Create an instance: `const product = client.Product()`
 #### Example: Load
 
 ```ts
-const product = await client.Product().load({ id: 'product_id' })
+const product = await client.product.load({ id: 'product_id' })
 ```
 
 #### Example: Create
 
 ```ts
-const product = await client.Product().create({
+const product = await client.product.create({
 })
 ```
 
@@ -379,7 +376,7 @@ rest-api-beispiele/
 Import the SDK from the package root:
 
 ```ts
-import { RestApiBeispieleSDK } from 'rest-api-beispiele'
+import { RestApiBeispieleSDK } from '@voxgig-sdk/rest-api-beispiele'
 ```
 
 ### Entity state
@@ -389,11 +386,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const delete = client.delete
+await delete.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// delete.data() now returns the loaded delete data
+// delete.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

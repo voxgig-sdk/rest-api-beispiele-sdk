@@ -44,9 +44,7 @@ class TestProductEntity:
         product_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.product"), "product_ref01"))
 
-        product_ref01_data_result, err = product_ref01_ent.create(product_ref01_data, None)
-        assert err is None
-        product_ref01_data = helpers.to_map(product_ref01_data_result)
+        product_ref01_data = helpers.to_map(product_ref01_ent.create(product_ref01_data, None))
         assert product_ref01_data is not None
         assert product_ref01_data["id"] is not None
 
@@ -59,9 +57,7 @@ class TestProductEntity:
         product_ref01_markdef_up0_value = "Mark01-product_ref01_" + str(setup["now"])
         product_ref01_data_up0_up[product_ref01_markdef_up0_name] = product_ref01_markdef_up0_value
 
-        product_ref01_resdata_up0_result, err = product_ref01_ent.update(product_ref01_data_up0_up, None)
-        assert err is None
-        product_ref01_resdata_up0 = helpers.to_map(product_ref01_resdata_up0_result)
+        product_ref01_resdata_up0 = helpers.to_map(product_ref01_ent.update(product_ref01_data_up0_up, None))
         assert product_ref01_resdata_up0 is not None
         assert product_ref01_resdata_up0["id"] == product_ref01_data_up0_up["id"]
         assert product_ref01_resdata_up0[product_ref01_markdef_up0_name] == product_ref01_markdef_up0_value
@@ -70,8 +66,7 @@ class TestProductEntity:
         product_ref01_match_dt0 = {
             "id": product_ref01_data["id"],
         }
-        product_ref01_data_dt0_loaded, err = product_ref01_ent.load(product_ref01_match_dt0, None)
-        assert err is None
+        product_ref01_data_dt0_loaded = product_ref01_ent.load(product_ref01_match_dt0, None)
         product_ref01_data_dt0_load_result = helpers.to_map(product_ref01_data_dt0_loaded)
         assert product_ref01_data_dt0_load_result is not None
         assert product_ref01_data_dt0_load_result["id"] == product_ref01_data["id"]
@@ -114,7 +109,6 @@ def _product_basic_setup(extra):
         "RESTAPIBEISPIELE_TEST_PRODUCT_ENTID": idmap,
         "RESTAPIBEISPIELE_TEST_LIVE": "FALSE",
         "RESTAPIBEISPIELE_TEST_EXPLAIN": "FALSE",
-        "RESTAPIBEISPIELE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -125,7 +119,6 @@ def _product_basic_setup(extra):
     if env.get("RESTAPIBEISPIELE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RESTAPIBEISPIELE_APIKEY"),
             },
             extra or {},
         ])

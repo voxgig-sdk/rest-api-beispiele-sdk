@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.predic8.de',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -78,7 +74,8 @@ class Config {
                     "name": "product_id",
                     "orig": "product_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -210,7 +207,8 @@ class Config {
                     "name": "id",
                     "orig": "product_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -302,7 +300,8 @@ class Config {
                     "name": "id",
                     "orig": "product_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },

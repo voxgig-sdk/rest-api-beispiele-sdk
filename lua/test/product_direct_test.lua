@@ -70,14 +70,12 @@ function product_direct_setup(mockres)
   local env = runner.env_override({
     ["RESTAPIBEISPIELE_TEST_PRODUCT_ENTID"] = {},
     ["RESTAPIBEISPIELE_TEST_LIVE"] = "FALSE",
-    ["RESTAPIBEISPIELE_APIKEY"] = "NONE",
   })
 
   local live = env["RESTAPIBEISPIELE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["RESTAPIBEISPIELE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -87,6 +87,10 @@ end
 
 
 
+---@param reqmatch DeleteRemoveMatch
+---@param ctrl? table
+---@return Delete
+---@return string? err
 function DeleteEntity:remove(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

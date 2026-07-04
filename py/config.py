@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://api.predic8.de",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -47,6 +44,7 @@ def make_config():
                       "orig": "product_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -179,6 +177,7 @@ def make_config():
                       "orig": "product_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -271,6 +270,7 @@ def make_config():
                       "orig": "product_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
+                      "index$": 0,
                     },
                   ],
                 },

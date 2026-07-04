@@ -14,9 +14,6 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://api.predic8.de",
-			"auth": map[string]any{
-				"prefix": "Bearer",
-			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -46,6 +43,7 @@ func MakeConfig() map[string]any {
 											"orig": "product_id",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 								},
@@ -178,6 +176,7 @@ func MakeConfig() map[string]any {
 											"orig": "product_id",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 								},
@@ -270,6 +269,7 @@ func MakeConfig() map[string]any {
 											"orig": "product_id",
 											"reqd": true,
 											"type": "`$INTEGER`",
+											"index$": 0,
 										},
 									},
 								},

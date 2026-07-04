@@ -15,9 +15,6 @@ module RestApiBeispieleConfig
       },
       "options" => {
         "base" => "https://api.predic8.de",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -47,6 +44,7 @@ module RestApiBeispieleConfig
                         "orig" => "product_id",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -179,6 +177,7 @@ module RestApiBeispieleConfig
                         "orig" => "product_id",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -271,6 +270,7 @@ module RestApiBeispieleConfig
                         "orig" => "product_id",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },

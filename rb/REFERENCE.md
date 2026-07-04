@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -58,9 +57,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -74,14 +75,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -89,17 +90,17 @@ same parameters as `direct()`.
 ## DeleteEntity
 
 ```ruby
-delete = client.Delete
+delete = client.delete
 ```
 
 ### Operations
 
-#### `remove(reqmatch, ctrl = nil) -> result, err`
+#### `remove(reqmatch, ctrl = nil) -> result`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Delete.remove({ "id" => "delete_id" })
+result = client.delete.remove({ "id" => "delete_id" })
 ```
 
 ### Common Methods
@@ -135,7 +136,7 @@ Return the entity name.
 ## ProductEntity
 
 ```ruby
-product = client.Product
+product = client.product
 ```
 
 ### Fields
@@ -158,29 +159,29 @@ product = client.Product
 
 ### Operations
 
-#### `create(reqdata, ctrl = nil) -> result, err`
+#### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Raises on error.
 
 ```ruby
-result, err = client.Product.create({
+result = client.product.create({
 })
 ```
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Product.load({ "id" => "product_id" })
+result = client.product.load({ "id" => "product_id" })
 ```
 
-#### `update(reqdata, ctrl = nil) -> result, err`
+#### `update(reqdata, ctrl = nil) -> result`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Raises on error.
 
 ```ruby
-result, err = client.Product.update({
+result = client.product.update({
   "id" => "product_id",
   # Fields to update
 })

@@ -9,12 +9,9 @@ The Lua SDK for the RestApiBeispiele API — an entity-oriented client using Lua
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-rest-api-beispiele
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,16 +28,14 @@ loading a specific record.
 ```lua
 local sdk = require("rest-api-beispiele_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("REST-API-BEISPIELE_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 4. Create, update, and remove
 
 ```lua
 -- Remove
-client:Delete():remove({ id = created["id"] })
+client:delete():remove({ id = created["id"] })
 ```
 
 
@@ -86,7 +81,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:RestApiBeispiele():load({ id = "test01" })
+local result, err = client:delete():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -119,8 +114,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-REST-API-BEISPIELE_TEST_LIVE=TRUE
-REST-API-BEISPIELE_APIKEY=<your-key>
+REST_API_BEISPIELE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -143,7 +137,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -233,7 +226,7 @@ API path: `/shop/v2/products/`
 
 ### Delete
 
-Create an instance: `const delete = client.Delete()`
+Create an instance: `const delete = client.delete`
 
 #### Operations
 
@@ -244,7 +237,7 @@ Create an instance: `const delete = client.Delete()`
 
 ### Product
 
-Create an instance: `const product = client.Product()`
+Create an instance: `const product = client.product`
 
 #### Operations
 
@@ -266,13 +259,13 @@ Create an instance: `const product = client.Product()`
 #### Example: Load
 
 ```ts
-const product = await client.Product().load({ id: 'product_id' })
+const product = await client.product.load({ id: 'product_id' })
 ```
 
 #### Example: Create
 
 ```ts
-const product = await client.Product().create({
+const product = await client.product.create({
 })
 ```
 
@@ -348,11 +341,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local delete = client:delete()
+delete:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- delete:data_get() now returns the loaded delete data
+-- delete:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

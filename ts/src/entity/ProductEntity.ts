@@ -14,9 +14,15 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Product,
+  ProductLoadMatch,
+  ProductCreateData,
+  ProductUpdateData,
+} from '../RestApiBeispieleTypes'
 
 // TODO: needs Entity superclass
-class ProductEntity extends RestApiBeispieleEntityBase {
+class ProductEntity extends RestApiBeispieleEntityBase<Product> {
 
   constructor(client: RestApiBeispieleSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +38,7 @@ class ProductEntity extends RestApiBeispieleEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: ProductLoadMatch, ctrl?: Control): Promise<Product> {
 
     const utility = this._utility
 
@@ -136,7 +142,9 @@ class ProductEntity extends RestApiBeispieleEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Product> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
@@ -144,7 +152,7 @@ class ProductEntity extends RestApiBeispieleEntityBase {
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: ProductCreateData, ctrl?: Control): Promise<Product> {
 
     const utility = this._utility
     const {
@@ -243,14 +251,16 @@ class ProductEntity extends RestApiBeispieleEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Product> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async update(this: any, reqdata?: any, ctrl?: Control) {
+  async update(this: any, reqdata?: ProductUpdateData, ctrl?: Control): Promise<Product> {
 
     const utility = this._utility
 
@@ -355,7 +365,9 @@ class ProductEntity extends RestApiBeispieleEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Product> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

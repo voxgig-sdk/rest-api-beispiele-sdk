@@ -51,8 +51,7 @@ class TestDeleteEntity:
         delete_ref01_match_rm0 = {
             "id": delete_ref01_data["id"],
         }
-        _, err = delete_ref01_ent.remove(delete_ref01_match_rm0, None)
-        assert err is None
+        delete_ref01_ent.remove(delete_ref01_match_rm0, None)
 
 
 
@@ -92,7 +91,6 @@ def _delete_basic_setup(extra):
         "RESTAPIBEISPIELE_TEST_DELETE_ENTID": idmap,
         "RESTAPIBEISPIELE_TEST_LIVE": "FALSE",
         "RESTAPIBEISPIELE_TEST_EXPLAIN": "FALSE",
-        "RESTAPIBEISPIELE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _delete_basic_setup(extra):
     if env.get("RESTAPIBEISPIELE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RESTAPIBEISPIELE_APIKEY"),
             },
             extra or {},
         ])

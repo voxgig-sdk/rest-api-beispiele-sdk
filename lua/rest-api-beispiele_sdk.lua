@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:delete():list() / client:delete():load({ id = ... })
+function RestApiBeispieleSDK:delete(data)
+  local EntityMod = require("entity.delete_entity")
+  if data == nil then
+    if self._delete == nil then
+      self._delete = EntityMod.new(self, nil)
+    end
+    return self._delete
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:delete() instead.
 function RestApiBeispieleSDK:Delete(data)
   local EntityMod = require("entity.delete_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:product():list() / client:product():load({ id = ... })
+function RestApiBeispieleSDK:product(data)
+  local EntityMod = require("entity.product_entity")
+  if data == nil then
+    if self._product == nil then
+      self._product = EntityMod.new(self, nil)
+    end
+    return self._product
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:product() instead.
 function RestApiBeispieleSDK:Product(data)
   local EntityMod = require("entity.product_entity")
   return EntityMod.new(self, data)

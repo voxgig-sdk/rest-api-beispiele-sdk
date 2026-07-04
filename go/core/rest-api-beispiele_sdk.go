@@ -245,11 +245,17 @@ func (sdk *RestApiBeispieleSDK) Direct(fetchargs map[string]any) (map[string]any
 }
 
 
+// Delete returns a Delete entity bound to this client.
+// Idiomatic usage: client.Delete(nil).List(nil, nil) or
+// client.Delete(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RestApiBeispieleSDK) Delete(data map[string]any) RestApiBeispieleEntity {
 	return NewDeleteEntityFunc(sdk, data)
 }
 
 
+// Product returns a Product entity bound to this client.
+// Idiomatic usage: client.Product(nil).List(nil, nil) or
+// client.Product(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RestApiBeispieleSDK) Product(data map[string]any) RestApiBeispieleEntity {
 	return NewProductEntityFunc(sdk, data)
 }

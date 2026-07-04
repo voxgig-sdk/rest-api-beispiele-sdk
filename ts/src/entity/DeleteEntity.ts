@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Delete,
+  DeleteRemoveMatch,
+} from '../RestApiBeispieleTypes'
 
 // TODO: needs Entity superclass
-class DeleteEntity extends RestApiBeispieleEntityBase {
+class DeleteEntity extends RestApiBeispieleEntityBase<Delete> {
 
   constructor(client: RestApiBeispieleSDK, entopts: any) {
     super(client, entopts)
@@ -36,7 +40,7 @@ class DeleteEntity extends RestApiBeispieleEntityBase {
 
 
 
-  async remove(this: any, reqmatch?: any, ctrl?: Control) {
+  async remove(this: any, reqmatch?: DeleteRemoveMatch, ctrl?: Control): Promise<Delete> {
 
     const utility = this._utility
 
@@ -141,7 +145,9 @@ class DeleteEntity extends RestApiBeispieleEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Delete> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

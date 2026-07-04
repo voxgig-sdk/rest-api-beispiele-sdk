@@ -44,8 +44,7 @@ class DeleteEntityTest < Minitest::Test
     delete_ref01_match_rm0 = {
       "id" => delete_ref01_data["id"],
     }
-    _, err = delete_ref01_ent.remove(delete_ref01_match_rm0, nil)
-    assert_nil err
+    delete_ref01_ent.remove(delete_ref01_match_rm0, nil)
 
   end
 end
@@ -83,7 +82,6 @@ def delete_basic_setup(extra)
     "RESTAPIBEISPIELE_TEST_DELETE_ENTID" => idmap,
     "RESTAPIBEISPIELE_TEST_LIVE" => "FALSE",
     "RESTAPIBEISPIELE_TEST_EXPLAIN" => "FALSE",
-    "RESTAPIBEISPIELE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def delete_basic_setup(extra)
   if env["RESTAPIBEISPIELE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RESTAPIBEISPIELE_APIKEY"],
       },
       extra || {},
     ])

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `RestApiBeispieleSDK.test()`.
 ## DeleteEntity
 
 ```ts
-const delete = client.Delete()
+const delete = client.delete
 ```
 
 ### Operations
@@ -132,7 +131,7 @@ const delete = client.Delete()
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.Delete().remove({ id: 'delete_id' })
+const result = await client.delete.remove({ id: 'delete_id' })
 ```
 
 ### Common Methods
@@ -166,7 +165,7 @@ Return a copy of the entity options.
 ## ProductEntity
 
 ```ts
-const product = client.Product()
+const product = client.product
 ```
 
 ### Fields
@@ -194,7 +193,7 @@ const product = client.Product()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.Product().create({
+const result = await client.product.create({
 })
 ```
 
@@ -203,7 +202,7 @@ const result = await client.Product().create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Product().load({ id: 'product_id' })
+const result = await client.product.load({ id: 'product_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -211,7 +210,7 @@ const result = await client.Product().load({ id: 'product_id' })
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.Product().update({
+const result = await client.product.update({
   id: 'product_id',
   // Fields to update
 })

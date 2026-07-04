@@ -45,6 +45,7 @@ class DeleteEntity
     end
   end
 
+  # @return [Delete, Hash] the current Delete data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class DeleteEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Delete fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -71,6 +73,11 @@ class DeleteEntity
   
 
   
+  # Remove an Delete matching the given criteria.
+  #
+  # @param reqmatch [DeleteRemoveMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Delete, Hash] the removed Delete; raises RestApiBeispieleError on failure
   def remove(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
