@@ -129,22 +129,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = RestApiBeispieleSDK.test()
-const result = await client.delete.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const delete = await client.Delete().load({ id: 'test01' })
+// delete is a bare Delete populated with mock data
+console.log(delete)
 ```
 
 ### Python
 
 ```python
 client = RestApiBeispieleSDK.test()
-result = client.delete.load({"id": "test01"})
+delete = client.Delete().load({"id": "test01"})
+print(delete)
 ```
 
 ### PHP
 
 ```php
-$client = RestApiBeispieleSDK::test();
-$result = $client->delete()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = RestApiBeispieleSDK::test([
+    "entity" => ["delete" => ["test01" => ["id" => "test01"]]],
+]);
+$delete = $client->Delete()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -159,15 +164,18 @@ result, err := client.Delete(nil).Load(
 ### Ruby
 
 ```ruby
-client = RestApiBeispieleSDK.test
-result = client.delete.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = RestApiBeispieleSDK.test({
+  "entity" => { "delete" => { "test01" => { "id" => "test01" } } },
+})
+delete = client.Delete.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:delete():load({ id = "test01" })
+local result, err = client:Delete():load({ id = "test01" })
 ```
 
 ## How it works
@@ -215,6 +223,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

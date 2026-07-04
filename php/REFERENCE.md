@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## DeleteEntity
 
 ```php
-$delete = $client->delete();
+$delete = $client->Delete();
 ```
 
 ### Operations
@@ -99,7 +99,7 @@ $delete = $client->delete();
 Remove the entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->delete()->remove(["id" => "delete_id"]);
+$result = $client->Delete()->remove(["id" => "delete_id"]);
 ```
 
 ### Common Methods
@@ -135,7 +135,7 @@ Return the entity name.
 ## ProductEntity
 
 ```php
-$product = $client->product();
+$product = $client->Product();
 ```
 
 ### Fields
@@ -163,7 +163,7 @@ $product = $client->product();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->product()->create([
+$result = $client->Product()->create([
 ]);
 ```
 
@@ -172,7 +172,7 @@ $result = $client->product()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->product()->load(["id" => "product_id"]);
+$result = $client->Product()->load(["id" => "product_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -180,7 +180,7 @@ $result = $client->product()->load(["id" => "product_id"]);
 Update an existing entity. The data must include the entity `id`. Throws on error.
 
 ```php
-$result = $client->product()->update([
+$result = $client->Product()->update([
   "id" => "product_id",
   // Fields to update
 ]);

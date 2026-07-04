@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## DeleteEntity
 
 ```ruby
-delete = client.delete
+delete = client.Delete
 ```
 
 ### Operations
@@ -100,7 +100,7 @@ delete = client.delete
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.delete.remove({ "id" => "delete_id" })
+result = client.Delete.remove({ "id" => "delete_id" })
 ```
 
 ### Common Methods
@@ -136,7 +136,7 @@ Return the entity name.
 ## ProductEntity
 
 ```ruby
-product = client.product
+product = client.Product
 ```
 
 ### Fields
@@ -164,7 +164,7 @@ product = client.product
 Create a new entity with the given data. Raises on error.
 
 ```ruby
-result = client.product.create({
+result = client.Product.create({
 })
 ```
 
@@ -173,7 +173,7 @@ result = client.product.create({
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.product.load({ "id" => "product_id" })
+result = client.Product.load({ "id" => "product_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -181,7 +181,7 @@ result = client.product.load({ "id" => "product_id" })
 Update an existing entity. The data must include the entity `id`. Raises on error.
 
 ```ruby
-result = client.product.update({
+result = client.Product.update({
   "id" => "product_id",
   # Fields to update
 })

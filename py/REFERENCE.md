@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## DeleteEntity
 
 ```python
-delete = client.delete
+delete = client.Delete()
 ```
 
 ### Operations
@@ -94,7 +94,7 @@ delete = client.delete
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.delete.remove({"id": "delete_id"})
+result = client.Delete().remove({"id": "delete_id"})
 ```
 
 ### Common Methods
@@ -129,7 +129,7 @@ Return the entity name.
 ## ProductEntity
 
 ```python
-product = client.product
+product = client.Product()
 ```
 
 ### Fields
@@ -157,7 +157,7 @@ product = client.product
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.product.create({
+result = client.Product().create({
 })
 ```
 
@@ -166,7 +166,7 @@ result = client.product.create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.product.load({"id": "product_id"})
+result = client.Product().load({"id": "product_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -174,7 +174,7 @@ result = client.product.load({"id": "product_id"})
 Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result = client.product.update({
+result = client.Product().update({
     "id": "product_id",
     # Fields to update
 })

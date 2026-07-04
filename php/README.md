@@ -33,7 +33,7 @@ $client = new RestApiBeispieleSDK();
 
 ```php
 // Remove
-$client->delete()->remove(["id" => $created["id"]]);
+$client->Delete()->remove(["id" => $created["id"]]);
 ```
 
 
@@ -77,13 +77,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = RestApiBeispieleSDK::test();
+$client = RestApiBeispieleSDK::test([
+    "entity" => ["delete" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->delete()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$delete = $client->Delete()->load(["id" => "test01"]);
+print_r($delete);
 ```
 
 ### Use a custom fetch function
@@ -232,7 +236,7 @@ API path: `/shop/v2/products/`
 
 ### Delete
 
-Create an instance: `const delete = client.delete`
+Create an instance: `$delete = $client->Delete();`
 
 #### Operations
 
@@ -243,7 +247,7 @@ Create an instance: `const delete = client.delete`
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `$product = $client->Product();`
 
 #### Operations
 
@@ -264,15 +268,16 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```php
+// load() returns the bare Product record (throws on error).
+$product = $client->Product()->load(["id" => "product_id"]);
 ```
 
 #### Example: Create
 
-```ts
-const product = await client.product.create({
-})
+```php
+$product = $client->Product()->create([
+]);
 ```
 
 
@@ -347,7 +352,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$delete = $client->delete();
+$delete = $client->Delete();
 $delete->load(["id" => "example_id"]);
 
 // $delete->dataGet() now returns the loaded delete data

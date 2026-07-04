@@ -4,45 +4,43 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Delete:
+class Delete(TypedDict):
     pass
 
 
-@dataclass
-class DeleteRemoveMatch:
+class DeleteRemoveMatch(TypedDict):
     product_id: int
 
 
-@dataclass
-class Product:
-    id: Optional[int] = None
-    name: Optional[str] = None
-    price: Optional[float] = None
-    self_link: Optional[str] = None
+class Product(TypedDict, total=False):
+    id: int
+    name: str
+    price: float
+    self_link: str
 
 
-@dataclass
-class ProductLoadMatch:
+class ProductLoadMatch(TypedDict):
     id: int
 
 
-@dataclass
-class ProductCreateData:
-    id: Optional[int] = None
-    name: Optional[str] = None
-    price: Optional[float] = None
-    self_link: Optional[str] = None
-
-
-@dataclass
-class ProductUpdateData:
+class ProductCreateData(TypedDict, total=False):
     id: int
+    name: str
+    price: float
+    self_link: str
 
+
+class ProductUpdateData(TypedDict):
+    id: int

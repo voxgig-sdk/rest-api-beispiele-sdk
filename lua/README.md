@@ -35,7 +35,7 @@ local client = sdk.new()
 
 ```lua
 -- Remove
-client:delete():remove({ id = created["id"] })
+client:Delete():remove({ id = created["id"] })
 ```
 
 
@@ -81,8 +81,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:delete():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Delete():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -183,17 +183,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local delete, err = client:Delete():load({ id = "example_id" })
+    if err then error(err) end
+    -- delete is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -226,7 +231,7 @@ API path: `/shop/v2/products/`
 
 ### Delete
 
-Create an instance: `const delete = client.delete`
+Create an instance: `local delete = client:Delete(nil)`
 
 #### Operations
 
@@ -237,7 +242,7 @@ Create an instance: `const delete = client.delete`
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `local product = client:Product(nil)`
 
 #### Operations
 
@@ -258,14 +263,14 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```lua
+local product, err = client:Product():load({ id = "product_id" })
 ```
 
 #### Example: Create
 
-```ts
-const product = await client.product.create({
+```lua
+local product, err = client:Product():create({
 })
 ```
 
@@ -341,7 +346,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local delete = client:delete()
+local delete = client:Delete()
 delete:load({ id = "example_id" })
 
 -- delete:data_get() now returns the loaded delete data

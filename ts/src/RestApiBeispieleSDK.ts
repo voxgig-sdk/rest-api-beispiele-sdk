@@ -205,28 +205,14 @@ class RestApiBeispieleSDK {
 
 
 
-  _delete?: DeleteEntity
-
-  // Idiomatic facade: `client.delete.list()` / `client.delete.load({ id })`.
-  get delete(): DeleteEntity {
-    return (this._delete ??= new DeleteEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.delete` instead. */
+  // Entity access: `client.Delete().list()` / `client.Delete().load({ id })`.
   Delete(data?: any) {
     const self = this
     return new DeleteEntity(self,data)
   }
 
 
-  _product?: ProductEntity
-
-  // Idiomatic facade: `client.product.list()` / `client.product.load({ id })`.
-  get product(): ProductEntity {
-    return (this._product ??= new ProductEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.product` instead. */
+  // Entity access: `client.Product().list()` / `client.Product().load({ id })`.
   Product(data?: any) {
     const self = this
     return new ProductEntity(self,data)

@@ -32,7 +32,7 @@ client = RestApiBeispieleSDK.new
 
 ```ruby
 # Remove
-client.delete.remove({ "id" => created["id"] })
+client.Delete.remove({ "id" => created["id"] })
 ```
 
 
@@ -76,13 +76,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = RestApiBeispieleSDK.test
+client = RestApiBeispieleSDK.test({
+  "entity" => { "delete" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.delete.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+delete = client.Delete.load({ "id" => "test01" })
+puts delete
 ```
 
 ### Use a custom fetch function
@@ -227,7 +231,7 @@ API path: `/shop/v2/products/`
 
 ### Delete
 
-Create an instance: `const delete = client.delete`
+Create an instance: `delete = client.Delete`
 
 #### Operations
 
@@ -238,7 +242,7 @@ Create an instance: `const delete = client.delete`
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `product = client.Product`
 
 #### Operations
 
@@ -259,14 +263,15 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```ruby
+# load returns the bare Product record (raises on error).
+product = client.Product.load({ "id" => "product_id" })
 ```
 
 #### Example: Create
 
-```ts
-const product = await client.product.create({
+```ruby
+product = client.Product.create({
 })
 ```
 
@@ -342,7 +347,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-delete = client.delete
+delete = client.Delete
 delete.load({ "id" => "example_id" })
 
 # delete.data_get now returns the loaded delete data

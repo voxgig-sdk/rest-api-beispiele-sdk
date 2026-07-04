@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## DeleteEntity
 
 ```lua
-local delete = client:delete(nil)
+local delete = client:Delete(nil)
 ```
 
 ### Operations
@@ -97,7 +97,7 @@ local delete = client:delete(nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:delete():remove({ id = "delete_id" })
+local result, err = client:Delete():remove({ id = "delete_id" })
 ```
 
 ### Common Methods
@@ -133,7 +133,7 @@ Return the entity name.
 ## ProductEntity
 
 ```lua
-local product = client:product(nil)
+local product = client:Product(nil)
 ```
 
 ### Fields
@@ -161,7 +161,7 @@ local product = client:product(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:product():create({
+local result, err = client:Product():create({
 })
 ```
 
@@ -170,7 +170,7 @@ local result, err = client:product():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:product():load({ id = "product_id" })
+local result, err = client:Product():load({ id = "product_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -178,7 +178,7 @@ local result, err = client:product():load({ id = "product_id" })
 Update an existing entity. The data must include the entity `id`.
 
 ```lua
-local result, err = client:product():update({
+local result, err = client:Product():update({
   id = "product_id",
   -- Fields to update
 })

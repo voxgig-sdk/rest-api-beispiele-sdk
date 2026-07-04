@@ -35,7 +35,7 @@ client = RestApiBeispieleSDK()
 
 ```python
 # Remove
-client.delete.remove({"id": created["id"]})
+client.Delete().remove({"id": created["id"]})
 ```
 
 
@@ -81,8 +81,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = RestApiBeispieleSDK.test()
 
-result = client.delete.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+delete = client.Delete().load({"id": "test01"})
+# delete contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -228,7 +229,7 @@ API path: `/shop/v2/products/`
 
 ### Delete
 
-Create an instance: `const delete = client.delete`
+Create an instance: `delete = client.Delete()`
 
 #### Operations
 
@@ -239,7 +240,7 @@ Create an instance: `const delete = client.delete`
 
 ### Product
 
-Create an instance: `const product = client.product`
+Create an instance: `product = client.Product()`
 
 #### Operations
 
@@ -260,14 +261,14 @@ Create an instance: `const product = client.product`
 
 #### Example: Load
 
-```ts
-const product = await client.product.load({ id: 'product_id' })
+```python
+product = client.Product().load({"id": "product_id"})
 ```
 
 #### Example: Create
 
-```ts
-const product = await client.product.create({
+```python
+product = client.Product().create({
 })
 ```
 
@@ -342,7 +343,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-delete = client.delete
+delete = client.Delete()
 delete.load({"id": "example_id"})
 
 # delete.data_get() now returns the loaded delete data
