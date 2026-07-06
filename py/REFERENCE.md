@@ -8,7 +8,7 @@ Complete API reference for the RestApiBeispiele Python SDK.
 ### Constructor
 
 ```python
-from rest-api-beispiele_sdk import RestApiBeispieleSDK
+from restapibeispiele_sdk import RestApiBeispieleSDK
 
 client = RestApiBeispieleSDK(options)
 ```
@@ -94,7 +94,7 @@ delete = client.Delete()
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.Delete().remove({"id": "delete_id"})
+result = client.Delete().remove()
 ```
 
 ### Common Methods
@@ -136,19 +136,19 @@ product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `self_link` | ``$STRING`` | No |  |
+| `id` | `int` | No |  |
+| `name` | `str` | No |  |
+| `price` | `float` | No |  |
+| `self_link` | `str` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `id` | - | - | - | - | - |
-| `name` | - | - | Yes | Yes | - |
-| `price` | - | - | Yes | Yes | - |
-| `self_link` | - | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `id` | - | - | - |
+| `name` | - | Yes | Yes |
+| `price` | - | Yes | Yes |
+| `self_link` | - | - | - |
 
 ### Operations
 

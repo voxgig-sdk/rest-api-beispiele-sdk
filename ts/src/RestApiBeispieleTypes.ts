@@ -23,7 +23,12 @@ export interface ProductLoadMatch {
   id: number
 }
 
-export type ProductCreateData = Partial<Product>
+export interface ProductCreateData {
+  id?: number
+  name?: string
+  price?: number
+  self_link?: string
+}
 
 export interface ProductUpdateData {
   id: number

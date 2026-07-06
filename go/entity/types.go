@@ -30,8 +30,7 @@ type ProductLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// ProductCreateData mirrors the product fields as an all-optional match
-// filter (Go analog of Partial<Product>).
+// ProductCreateData is the typed request payload for Product.CreateTyped.
 type ProductCreateData struct {
 	Id *int `json:"id,omitempty"`
 	Name *string `json:"name,omitempty"`

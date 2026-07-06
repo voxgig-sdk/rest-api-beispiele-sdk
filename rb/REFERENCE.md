@@ -8,7 +8,7 @@ Complete API reference for the RestApiBeispiele Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'rest-api-beispiele_sdk'
+require_relative 'RestApiBeispiele_sdk'
 
 client = RestApiBeispieleSDK.new(options)
 ```
@@ -100,7 +100,7 @@ delete = client.Delete
 Remove the entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Delete.remove({ "id" => "delete_id" })
+result = client.Delete.remove()
 ```
 
 ### Common Methods
@@ -143,19 +143,19 @@ product = client.Product
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `self_link` | ``$STRING`` | No |  |
+| `id` | `Integer` | No |  |
+| `name` | `String` | No |  |
+| `price` | `Float` | No |  |
+| `self_link` | `String` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `id` | - | - | - | - | - |
-| `name` | - | - | Yes | Yes | - |
-| `price` | - | - | Yes | Yes | - |
-| `self_link` | - | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `id` | - | - | - |
+| `name` | - | Yes | Yes |
+| `price` | - | Yes | Yes |
+| `self_link` | - | - | - |
 
 ### Operations
 

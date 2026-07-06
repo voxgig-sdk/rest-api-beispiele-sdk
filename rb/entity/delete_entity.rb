@@ -78,7 +78,7 @@ class DeleteEntity
   # @param reqmatch [DeleteRemoveMatch, Hash, nil] match criteria (id/query fields)
   # @param ctrl [Object, nil] optional per-call control
   # @return [Delete, Hash] the removed Delete; raises RestApiBeispieleError on failure
-  def remove(reqmatch, ctrl = nil)
+  def remove(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "remove",

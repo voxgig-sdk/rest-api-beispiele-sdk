@@ -8,7 +8,7 @@ Complete API reference for the RestApiBeispiele PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/rest-api-beispiele_sdk.php';
+require_once __DIR__ . '/restapibeispiele_sdk.php';
 
 $client = new RestApiBeispieleSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `DeleteEntity` instance. Pass `null` for no initial data.
 
 Create a new `ProductEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): RestApiBeispieleUtility`
 
 Return a copy of the SDK utility object.
 
@@ -99,24 +99,24 @@ $delete = $client->Delete();
 Remove the entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Delete()->remove(["id" => "delete_id"]);
+$result = $client->Delete()->remove();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -125,7 +125,7 @@ Set the entity match criteria.
 Create a new `DeleteEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -142,19 +142,19 @@ $product = $client->Product();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `self_link` | ``$STRING`` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `price` | `float` | No |  |
+| `self_link` | `string` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `id` | - | - | - | - | - |
-| `name` | - | - | Yes | Yes | - |
-| `price` | - | - | Yes | Yes | - |
-| `self_link` | - | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `id` | - | - | - |
+| `name` | - | Yes | Yes |
+| `price` | - | Yes | Yes |
+| `self_link` | - | - | - |
 
 ### Operations
 
@@ -188,19 +188,19 @@ $result = $client->Product()->update([
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -209,7 +209,7 @@ Set the entity match criteria.
 Create a new `ProductEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

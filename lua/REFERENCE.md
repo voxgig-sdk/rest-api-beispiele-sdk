@@ -97,7 +97,7 @@ local delete = client:Delete(nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:Delete():remove({ id = "delete_id" })
+local result, err = client:Delete():remove()
 ```
 
 ### Common Methods
@@ -140,19 +140,19 @@ local product = client:Product(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `self_link` | ``$STRING`` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `price` | `number` | No |  |
+| `self_link` | `string` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `id` | - | - | - | - | - |
-| `name` | - | - | Yes | Yes | - |
-| `price` | - | - | Yes | Yes | - |
-| `self_link` | - | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `id` | - | - | - |
+| `name` | - | Yes | Yes |
+| `price` | - | Yes | Yes |
+| `self_link` | - | - | - |
 
 ### Operations
 

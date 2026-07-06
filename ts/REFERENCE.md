@@ -121,7 +121,7 @@ Alias for `RestApiBeispieleSDK.test()`.
 ## DeleteEntity
 
 ```ts
-const delete = client.Delete()
+const delete_ = client.Delete()
 ```
 
 ### Operations
@@ -131,7 +131,7 @@ const delete = client.Delete()
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.Delete().remove({ id: 'delete_id' })
+const result = await client.Delete().remove()
 ```
 
 ### Common Methods
@@ -172,19 +172,19 @@ const product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `self_link` | ``$STRING`` | No |  |
+| `id` | `number` | No |  |
+| `name` | `string` | No |  |
+| `price` | `number` | No |  |
+| `self_link` | `string` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `id` | - | - | - | - | - |
-| `name` | - | - | Yes | Yes | - |
-| `price` | - | - | Yes | Yes | - |
-| `self_link` | - | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `id` | - | - | - |
+| `name` | - | Yes | Yes |
+| `price` | - | Yes | Yes |
+| `self_link` | - | - | - |
 
 ### Operations
 
@@ -202,7 +202,7 @@ const result = await client.Product().create({
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Product().load({ id: 'product_id' })
+const result = await client.Product().load({ id: 1 })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -211,7 +211,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.Product().update({
-  id: 'product_id',
+  id: 1,
   // Fields to update
 })
 ```

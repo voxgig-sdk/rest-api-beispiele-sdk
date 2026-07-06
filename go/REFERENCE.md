@@ -104,7 +104,7 @@ delete := client.Delete(nil)
 Remove the entity matching the given criteria.
 
 ```go
-result, err := client.Delete(nil).Remove(map[string]any{"id": "delete_id"}, nil)
+result, err := client.Delete(nil).Remove(nil, nil)
 ```
 
 ### Common Methods
@@ -141,19 +141,19 @@ product := client.Product(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | ``$INTEGER`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `price` | ``$NUMBER`` | No |  |
-| `self_link` | ``$STRING`` | No |  |
+| `id` | `int` | No |  |
+| `name` | `string` | No |  |
+| `price` | `float64` | No |  |
+| `self_link` | `string` | No |  |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `id` | - | - | - | - | - |
-| `name` | - | - | Yes | Yes | - |
-| `price` | - | - | Yes | Yes | - |
-| `self_link` | - | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `id` | - | - | - |
+| `name` | - | Yes | Yes |
+| `price` | - | Yes | Yes |
+| `self_link` | - | - | - |
 
 ### Operations
 

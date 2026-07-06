@@ -51,7 +51,7 @@ ProductLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Product#create (any subset of Product fields).
+# Request payload for Product#create.
 #
 # @!attribute [rw] id
 #   @return [Integer, nil]

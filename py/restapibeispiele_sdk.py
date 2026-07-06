@@ -221,13 +221,13 @@ class RestApiBeispieleSDK:
 
 
     def Delete(self, data=None) -> "DeleteEntity":
-        """Entity factory: client.Delete().list({}) / client.Delete().load({"id": ...})."""
+        """Entity factory: client.Delete().list() / client.Delete().load({"id": ...})."""
         from entity.delete_entity import DeleteEntity
         return DeleteEntity(self, data)
 
 
     def Product(self, data=None) -> "ProductEntity":
-        """Entity factory: client.Product().list({}) / client.Product().load({"id": ...})."""
+        """Entity factory: client.Product().list() / client.Product().load({"id": ...})."""
         from entity.product_entity import ProductEntity
         return ProductEntity(self, data)
 

@@ -21,6 +21,10 @@
 ---@field id number
 
 ---@class ProductCreateData
+---@field id? number
+---@field name? string
+---@field price? number
+---@field self_link? string
 
 ---@class ProductUpdateData
 ---@field id number

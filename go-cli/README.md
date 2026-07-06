@@ -16,9 +16,6 @@ go build -o rest-api-beispiele-cli ./...
 
 ```sh
 # One-shot: arguments form a single AQL expression
-./rest-api-beispiele-cli list delete
-./rest-api-beispiele-cli load 1 delete
-./rest-api-beispiele-cli load '{id:1}' delete
 
 # REPL
 ./rest-api-beispiele-cli
@@ -28,7 +25,6 @@ go build -o rest-api-beispiele-cli ./...
 
 | Word     | Signatures                                   | Description                |
 |----------|----------------------------------------------|----------------------------|
-| `list`   | `[entity]` · `[query entity]`                | List records               |
 | `load`   | `[entity]` · `[query entity]`                | Load a single record       |
 | `update` | `[entity]` · `[query entity]`                | Update a record            |
 

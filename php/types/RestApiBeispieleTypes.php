@@ -38,7 +38,7 @@ class ProductLoadMatch
     public int $id;
 }
 
-/** Match filter for Product#create (any subset of Product fields). */
+/** Request payload for Product#create. */
 class ProductCreateData
 {
     public ?int $id = null;
