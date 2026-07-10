@@ -37,7 +37,7 @@ local client = sdk.new()
 
 ```lua
 -- Remove
-client:Delete():remove()
+client:Delete():remove({ product_id = 1 })
 ```
 
 
@@ -47,7 +47,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local delete, err = client:Delete():remove()
+local product, err = client:Product():load({ id = 1 })
 if err then error(err) end
 ```
 
@@ -105,7 +105,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Delete():remove()
+local result, err = client:Product():load({ id = "test01" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -286,7 +286,7 @@ Create an instance: `local product = client:Product(nil)`
 #### Example: Load
 
 ```lua
-local product, err = client:Product():load({ id = "product_id" })
+local product, err = client:Product():load({ id = 1 })
 ```
 
 #### Example: Create
@@ -369,15 +369,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `remove`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local delete = client:Delete()
-delete:remove()
+local product = client:Product()
+product:load({ id = 1 })
 
--- delete:data_get() now returns the delete data from the last remove
--- delete:match_get() returns the last match criteria
+-- product:data_get() now returns the product data from the last load
+-- product:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

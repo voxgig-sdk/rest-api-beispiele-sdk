@@ -16,9 +16,9 @@ main: {
           url: "https://api.predic8.de"
         }
       ]
+      summary: "Dieses API bietet Beispiele für REST API Aufrufe, insbesondere für die HTTP Methoden POST, PUT und PATCH."
       title: "REST API Beispiele"
       version: "2.0.0"
+      website: "https://predic8.de"
     }
   }
-}
-

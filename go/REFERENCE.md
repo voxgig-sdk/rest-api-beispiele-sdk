@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 delete := client.Delete(nil)
+fmt.Println(delete.GetName()) // "delete"
 ```
 
 ### Operations
@@ -104,7 +105,11 @@ delete := client.Delete(nil)
 Remove the entity matching the given criteria.
 
 ```go
-result, err := client.Delete(nil).Remove(nil, nil)
+result, err := client.Delete(nil).Remove(map[string]any{"product_id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -135,6 +140,7 @@ Return the entity name.
 
 ```go
 product := client.Product(nil)
+fmt.Println(product.GetName()) // "product"
 ```
 
 ### Fields
@@ -157,6 +163,18 @@ product := client.Product(nil)
 
 ### Operations
 
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
+
+Load a single entity matching the given criteria.
+
+```go
+result, err := client.Product(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
 
 Create a new entity with the given data.
@@ -164,14 +182,10 @@ Create a new entity with the given data.
 ```go
 result, err := client.Product(nil).Create(map[string]any{
 }, nil)
-```
-
-#### `Load(reqmatch, ctrl map[string]any) (any, error)`
-
-Load a single entity matching the given criteria.
-
-```go
-result, err := client.Product(nil).Load(map[string]any{"id": "product_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 #### `Update(reqdata, ctrl map[string]any) (any, error)`
@@ -180,9 +194,13 @@ Update an existing entity. The data must include the entity `id`.
 
 ```go
 result, err := client.Product(nil).Update(map[string]any{
-    "id": "product_id",
+    "id": 1,
     // Fields to update
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

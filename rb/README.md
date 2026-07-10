@@ -34,7 +34,7 @@ client = RestApiBeispieleSDK.new
 
 ```ruby
 # Remove
-client.Delete.remove()
+client.Delete.remove({ "product_id" => 1 })
 ```
 
 
@@ -44,9 +44,9 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  delete = client.Delete.remove()
+  product = client.Product.load({ "id" => 1 })
 rescue => err
-  warn "remove failed: #{err}"
+  warn "load failed: #{err}"
 end
 ```
 
@@ -107,14 +107,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = RestApiBeispieleSDK.test
+client = RestApiBeispieleSDK.test({
+  "entity" => { "product" => { "test01" => { "id" => "test01" } } },
+})
 
 # Entity ops return the bare mock record (raises on error).
-delete = client.Delete.remove()
-puts delete
+product = client.Product.load({ "id" => "test01" })
+puts product
 ```
 
 ### Use a custom fetch function
@@ -292,7 +295,7 @@ Create an instance: `product = client.Product`
 
 ```ruby
 # load returns the bare Product record (raises on error).
-product = client.Product.load({ "id" => "product_id" })
+product = client.Product.load({ "id" => 1 })
 ```
 
 #### Example: Create
@@ -375,15 +378,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `remove`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-delete = client.Delete
-delete.remove()
+product = client.Product
+product.load({ "id" => 1 })
 
-# delete.data_get now returns the delete data from the last remove
-# delete.match_get returns the last match criteria
+# product.data_get now returns the product data from the last load
+# product.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

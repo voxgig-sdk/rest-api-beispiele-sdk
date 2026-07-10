@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -490,14 +487,17 @@
           "url": "https://www.predic8.de"
         },
         "description": "Dieses API bietet Beispiele für REST API Aufrufe, insbesondere für die HTTP Methoden POST, PUT und PATCH. Es dient als Anleitung, um Ressourcen zu erstellen, zu aktualisieren oder zu löschen, wobei ein Beispielservice verwendet wird. Fruit Shop Beispielservice für Produktverwaltung.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.predic8.de"
           }
         ],
+        "summary": "Dieses API bietet Beispiele für REST API Aufrufe, insbesondere für die HTTP Methoden POST, PUT und PATCH.",
         "title": "REST API Beispiele",
-        "version": "2.0.0"
+        "version": "2.0.0",
+        "website": "https://predic8.de"
       },
       "option": {},
       "target": {
@@ -550,6 +550,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -600,6 +603,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

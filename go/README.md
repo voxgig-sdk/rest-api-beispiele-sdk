@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Remove a delete.
-    removed, err := client.Delete(nil).Remove(nil, nil)
+    removed, err := client.Delete(nil).Remove(map[string]any{"product_id": 1}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,12 +66,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-delete, err := client.Delete(nil).Remove(nil, nil)
+product, err := client.Product(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     // handle err
     return
 }
-_ = delete
+_ = product
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-delete, err := client.Delete(nil).Remove(
-    nil, nil,
+product, err := client.Product(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(delete) // the returned mock data
+fmt.Println(product) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -304,8 +304,8 @@ Create an instance: `product := client.Product(nil)`
 
 | Method | Description |
 | --- | --- |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `Update(data, ctrl)` | Update an existing entity. |
 
 #### Fields
@@ -320,7 +320,7 @@ Create an instance: `product := client.Product(nil)`
 #### Example: Load
 
 ```go
-product, err := client.Product(nil).Load(map[string]any{"id": "product_id"}, nil)
+product, err := client.Product(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -332,6 +332,10 @@ fmt.Println(product) // the loaded record
 ```go
 result, err := client.Product(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
@@ -404,15 +408,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Remove`, the entity
+Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-delete := client.Delete(nil)
-delete.Remove(nil, nil)
+product := client.Product(nil)
+product.Load(map[string]any{"id": 1}, nil)
 
-// delete.Data() now returns the delete data from the last remove
-// delete.Match() returns the last match criteria
+// product.Data() now returns the product data from the last load
+// product.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

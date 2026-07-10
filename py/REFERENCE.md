@@ -94,7 +94,7 @@ delete = client.Delete()
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.Delete().remove()
+result = client.Delete().remove({"product_id": 1})
 ```
 
 ### Common Methods
@@ -166,7 +166,7 @@ result = client.Product().create({
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Product().load({"id": "product_id"})
+result = client.Product().load({"id": 1})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -175,7 +175,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.Product().update({
-    "id": "product_id",
+    "id": 1,
     # Fields to update
 })
 ```

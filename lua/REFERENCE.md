@@ -97,7 +97,7 @@ local delete = client:Delete(nil)
 Remove the entity matching the given criteria.
 
 ```lua
-local result, err = client:Delete():remove()
+local result, err = client:Delete():remove({ product_id = 1 })
 ```
 
 ### Common Methods
@@ -170,7 +170,7 @@ local result, err = client:Product():create({
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Product():load({ id = "product_id" })
+local result, err = client:Product():load({ id = 1 })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -179,7 +179,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```lua
 local result, err = client:Product():update({
-  id = "product_id",
+  id = 1,
   -- Fields to update
 })
 ```

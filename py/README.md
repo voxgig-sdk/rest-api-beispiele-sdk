@@ -40,7 +40,7 @@ client = RestApiBeispieleSDK()
 
 ```python
 # Remove
-client.Delete().remove()
+client.Delete().remove({"product_id": 1})
 ```
 
 
@@ -50,10 +50,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    delete = client.Delete().remove()
-    print(delete)
+    product = client.Product().load({"id": 1})
+    print(product)
 except Exception as err:
-    print(f"remove failed: {err}")
+    print(f"load failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -118,8 +118,8 @@ Create a mock client for unit testing — no server required:
 client = RestApiBeispieleSDK.test()
 
 # Entity ops return the bare record and raise on error.
-delete = client.Delete().remove()
-# delete contains the mock response record
+product = client.Product().load({"id": "test01"})
+# product contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -297,7 +297,7 @@ Create an instance: `product = client.Product()`
 #### Example: Load
 
 ```python
-product = client.Product().load({"id": "product_id"})
+product = client.Product().load({"id": 1})
 ```
 
 #### Example: Create
@@ -379,15 +379,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `remove`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-delete = client.Delete()
-delete.remove()
+product = client.Product()
+product.load({"id": 1})
 
-# delete.data_get() now returns the delete data from the last remove
-# delete.match_get() returns the last match criteria
+# product.data_get() now returns the product data from the last load
+# product.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

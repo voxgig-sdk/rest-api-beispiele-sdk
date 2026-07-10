@@ -37,7 +37,9 @@ const client = new RestApiBeispieleSDK()
 
 ```ts
 // Remove
-await client.Delete().remove()
+await client.Delete().remove({
+  product_id: 1,
+})
 ```
 
 
@@ -47,10 +49,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const delete_ = await client.Delete().remove()
-  console.log(delete_)
+  const product = await client.Product().load({ id: 1 })
+  console.log(product)
 } catch (err) {
-  console.error('remove failed:', err)
+  console.error('load failed:', err)
 }
 ```
 
@@ -114,9 +116,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RestApiBeispieleSDK.test()
 
-const delete_ = await client.Delete().remove()
-// delete_ is a bare entity populated with mock response data
-console.log(delete_)
+const product = await client.Product().load({ id: 1 })
+// product is a bare entity populated with mock response data
+console.log(product)
 ```
 
 You can also use the instance method:
@@ -131,14 +133,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Delete()
+const entity = client.Product()
 
 // First call runs the operation and stores its result
-await entity.remove()
+await entity.load({ id: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -416,16 +418,16 @@ import { RestApiBeispieleSDK } from '@voxgig-sdk/rest-api-beispiele'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `remove`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const delete_ = client.Delete()
-await delete_.remove()
+const product = client.Product()
+await product.load({ id: 1 })
 
-// delete_.data() now returns the delete_ data from the last `remove`
-// delete_.match() returns the last match criteria
+// product.data() now returns the product data from the last `load`
+// product.match() returns { id: 1 }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

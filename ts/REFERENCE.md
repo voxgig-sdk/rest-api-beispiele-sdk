@@ -131,7 +131,7 @@ const delete_ = client.Delete()
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.Delete().remove()
+const result = await client.Delete().remove({ product_id: 1 })
 ```
 
 ### Common Methods

@@ -99,7 +99,7 @@ $delete = $client->Delete();
 Remove the entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Delete()->remove();
+$result = $client->Delete()->remove(["product_id" => 1]);
 ```
 
 ### Common Methods
@@ -172,7 +172,7 @@ $result = $client->Product()->create([
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Product()->load(["id" => "product_id"]);
+$result = $client->Product()->load(["id" => 1]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -181,7 +181,7 @@ Update an existing entity. The data must include the entity `id`. Throws on erro
 
 ```php
 $result = $client->Product()->update([
-  "id" => "product_id",
+  "id" => 1,
   // Fields to update
 ]);
 ```
