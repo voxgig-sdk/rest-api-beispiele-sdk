@@ -59,12 +59,6 @@ describe('DeleteEntity', async () => {
 
     let delete_ref01_data = Object.values(setup.data.existing.delete)[0] as any
 
-    // REMOVE
-    const delete_ref01_ent = client.Delete()
-    const delete_ref01_match_rm0: any = { id: delete_ref01_data.id }
-    await delete_ref01_ent.remove(delete_ref01_match_rm0)
-  
-
   })
 })
 

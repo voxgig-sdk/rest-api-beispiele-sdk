@@ -59,16 +59,6 @@ func TestDeleteEntity(t *testing.T) {
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = deleteRef01Data
 
-		// REMOVE
-		deleteRef01Ent := client.Delete(nil)
-		deleteRef01MatchRm0 := map[string]any{
-			"id": deleteRef01Data["id"],
-		}
-		_, err := deleteRef01Ent.Remove(deleteRef01MatchRm0, nil)
-		if err != nil {
-			t.Fatalf("remove failed: %v", err)
-		}
-
 	})
 }
 

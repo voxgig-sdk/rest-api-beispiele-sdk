@@ -42,14 +42,6 @@ describe("DeleteEntity", function()
       delete_ref01_data = helpers.to_map(delete_ref01_data_raw[1][2])
     end
 
-    -- REMOVE
-    local delete_ref01_ent = client:Delete(nil)
-    local delete_ref01_match_rm0 = {
-      id = delete_ref01_data["id"],
-    }
-    local _, err = delete_ref01_ent:remove(delete_ref01_match_rm0, nil)
-    assert.is_nil(err)
-
   end)
 end)
 

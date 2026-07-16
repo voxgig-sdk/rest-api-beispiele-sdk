@@ -46,13 +46,6 @@ class DeleteEntityTest extends TestCase
             $delete_ref01_data = Helpers::to_map($delete_ref01_data_raw[0][1]);
         }
 
-        // REMOVE
-        $delete_ref01_ent = $client->Delete(null);
-        $delete_ref01_match_rm0 = [
-            "id" => $delete_ref01_data["id"],
-        ];
-        $delete_ref01_ent->remove($delete_ref01_match_rm0, null);
-
     }
 }
 

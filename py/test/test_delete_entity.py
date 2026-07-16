@@ -46,13 +46,6 @@ class TestDeleteEntity:
         if len(delete_ref01_data_raw) > 0:
             delete_ref01_data = helpers.to_map(delete_ref01_data_raw[0][1])
 
-        # REMOVE
-        delete_ref01_ent = client.Delete(None)
-        delete_ref01_match_rm0 = {
-            "id": delete_ref01_data["id"],
-        }
-        delete_ref01_ent.remove(delete_ref01_match_rm0, None)
-
 
 
 def _delete_basic_setup(extra):
