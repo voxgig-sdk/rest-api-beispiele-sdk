@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- RestApiBeispiele SDK exists test
 
 local sdk = require("rest-api-beispiele_sdk")
 
