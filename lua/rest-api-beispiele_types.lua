@@ -28,6 +28,9 @@
 
 ---@class ProductUpdateData
 ---@field id number
+---@field name? string
+---@field price? number
+---@field self_link? string
 
 local M = {}
 

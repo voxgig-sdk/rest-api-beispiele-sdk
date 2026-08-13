@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from restapibeispiele_sdk.utility.voxgig_struct import voxgig_struct as vs
 from restapibeispiele_sdk import RestApiBeispieleSDK
-from core import helpers
+from restapibeispiele_sdk.core import helpers
 from test import runner
 
 
@@ -63,11 +63,11 @@ def _product_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "RESTAPIBEISPIELE_TEST_PRODUCT_ENTID": {},
-        "RESTAPIBEISPIELE_TEST_LIVE": "FALSE",
+        "REST_API_BEISPIELE_TEST_PRODUCT_ENTID": {},
+        "REST_API_BEISPIELE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("RESTAPIBEISPIELE_TEST_LIVE") == "TRUE"
+    live = env.get("REST_API_BEISPIELE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

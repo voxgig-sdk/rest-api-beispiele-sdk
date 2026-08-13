@@ -32,5 +32,8 @@ export interface ProductCreateData {
 
 export interface ProductUpdateData {
   id: number
+  name?: string
+  price?: number
+  self_link?: string
 }
 

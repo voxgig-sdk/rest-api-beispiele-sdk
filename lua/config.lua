@@ -47,6 +47,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/shop/v2/products/{productId}",
                 ["parts"] = {
@@ -143,6 +144,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/shop/v2/products/",
                 ["parts"] = {
@@ -180,6 +182,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/shop/v2/products/{productId}",
                 ["parts"] = {
@@ -226,6 +229,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/shop/v2/products/{productId}",
                 ["parts"] = {
@@ -273,6 +277,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "PUT",
                 ["orig"] = "/shop/v2/products/{productId}",
                 ["parts"] = {

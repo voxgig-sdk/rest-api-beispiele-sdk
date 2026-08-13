@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ RestApiBeispieleUtility.registrar = ->(u) {
   u.prepare_params = RestApiBeispieleUtilities::PrepareParams
   u.prepare_path = RestApiBeispieleUtilities::PreparePath
   u.prepare_query = RestApiBeispieleUtilities::PrepareQuery
+  u.graphql_body = RestApiBeispieleUtilities::GraphqlBody
+  u.graphql_errors = RestApiBeispieleUtilities::GraphqlErrors
   u.result_basic = RestApiBeispieleUtilities::ResultBasic
   u.result_body = RestApiBeispieleUtilities::ResultBody
   u.result_headers = RestApiBeispieleUtilities::ResultHeaders

@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# RestApiBeispiele SDK exists test
 
 import pytest
 from restapibeispiele_sdk import RestApiBeispieleSDK

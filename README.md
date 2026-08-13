@@ -37,9 +37,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = RestApiBeispieleSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = RestApiBeispieleSDK.test({
+  entity: {
+    product: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const product = await client.Product().load({ id: 1 })
-// product is a bare Product populated with mock data
+// product is the Product entity, populated with mock data
+// — call product.data() for the record itself
 console.log(product)
 ```
 
@@ -150,7 +159,7 @@ The API exposes 2 entities:
 | Entity | Description | API path |
 | --- | --- | --- |
 | **Delete** | The Delete entity (remove). | `/shop/v2/products/{productId}` |
-| **Product** | The Product entity (create, load, patch, update). | `/shop/v2/products/` |
+| **Product** | The Product entity (create, load, patch, update). | `/shop/v2/products/{productId}` |
 
 The operations available across these entities are **load**, **create**, **update**, **remove** — see each entity's
 own list above for exactly which it supports.
@@ -319,6 +328,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.predic8.de](https://www.predic8.de)
 

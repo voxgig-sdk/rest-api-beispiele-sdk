@@ -26,8 +26,8 @@ import {
 describe('ProductEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when RESTAPIBEISPIELE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('RESTAPIBEISPIELE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when REST_API_BEISPIELE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('REST_API_BEISPIELE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = RestApiBeispieleSDK.test()
@@ -62,7 +62,7 @@ describe('ProductEntity', async () => {
     const product_ref01_ent = client.Product()
     let product_ref01_data = setup.data.new.product['product_ref01']
 
-    product_ref01_data = await product_ref01_ent.create(product_ref01_data)
+    product_ref01_data = (await product_ref01_ent.create(product_ref01_data)).data()
     assert(null != product_ref01_data.id)
 
 
@@ -73,7 +73,7 @@ describe('ProductEntity', async () => {
     const product_ref01_markdef_up0 = { name: 'name', value: 'Mark01-product_ref01_' + setup.now }
     ;(product_ref01_data_up0 as any)[product_ref01_markdef_up0.name] = product_ref01_markdef_up0.value
 
-    const product_ref01_resdata_up0 = await product_ref01_ent.update(product_ref01_data_up0)
+    const product_ref01_resdata_up0 = (await product_ref01_ent.update(product_ref01_data_up0)).data()
     assert(product_ref01_resdata_up0.id === product_ref01_data_up0.id)
 
     assert((product_ref01_resdata_up0 as any)[product_ref01_markdef_up0.name] === product_ref01_markdef_up0.value)
@@ -82,7 +82,7 @@ describe('ProductEntity', async () => {
     // LOAD
     const product_ref01_match_dt0: any = {}
     product_ref01_match_dt0.id = product_ref01_data.id
-    const product_ref01_data_dt0 = await product_ref01_ent.load(product_ref01_match_dt0)
+    const product_ref01_data_dt0 = (await product_ref01_ent.load(product_ref01_match_dt0)).data()
     assert(product_ref01_data_dt0.id === product_ref01_data.id)
 
 

@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 const client = RestApiBeispieleSDK.test()
 
 const product = await client.Product().load({ id: 1 })
-// product is a bare entity populated with mock response data
+// product is the entity, populated with mock response data
+// — call product.data() for the record itself
 console.log(product)
 ```
 

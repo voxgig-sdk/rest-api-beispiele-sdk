@@ -51,5 +51,8 @@ class ProductCreateData
 class ProductUpdateData
 {
     public int $id;
+    public ?string $name = null;
+    public ?float $price = null;
+    public ?string $self_link = null;
 }
 

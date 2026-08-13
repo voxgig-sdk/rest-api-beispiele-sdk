@@ -1,0 +1,315 @@
+# RestApiBeispiele SDK configuration
+
+
+def make_config():
+    return {
+        "main": {
+            "name": "RestApiBeispiele",
+        },
+        "feature": {
+            "test": {
+        "options": {
+          "active": False,
+        },
+      },
+        },
+        "options": {
+            "base": "https://api.predic8.de",
+            "headers": {
+        "content-type": "application/json",
+      },
+            "entity": {
+                "delete": {},
+                "product": {},
+            },
+        },
+        "entity": {
+      "delete": {
+        "fields": [],
+        "name": "delete",
+        "op": {
+          "remove": {
+            "input": "data",
+            "name": "remove",
+            "points": [
+              {
+                "active": True,
+                "args": {
+                  "params": [
+                    {
+                      "active": True,
+                      "example": 22,
+                      "kind": "param",
+                      "name": "product_id",
+                      "orig": "product_id",
+                      "reqd": True,
+                      "type": "`$INTEGER`",
+                      "index$": 0,
+                    },
+                  ],
+                },
+                "kind": "http",
+                "method": "DELETE",
+                "orig": "/shop/v2/products/{productId}",
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                  "{product_id}",
+                ],
+                "rename": {
+                  "param": {
+                    "productId": "product_id",
+                  },
+                },
+                "select": {
+                  "exist": [
+                    "product_id",
+                  ],
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "index$": 0,
+              },
+            ],
+            "key$": "remove",
+          },
+        },
+        "relations": {
+          "ancestors": [
+            [
+              "product",
+            ],
+          ],
+        },
+      },
+      "product": {
+        "fields": [
+          {
+            "active": True,
+            "name": "id",
+            "req": False,
+            "type": "`$INTEGER`",
+            "index$": 0,
+          },
+          {
+            "active": True,
+            "name": "name",
+            "op": {
+              "create": {
+                "req": True,
+                "type": "`$STRING`",
+              },
+              "update": {
+                "req": True,
+                "type": "`$STRING`",
+              },
+            },
+            "req": False,
+            "type": "`$STRING`",
+            "index$": 1,
+          },
+          {
+            "active": True,
+            "name": "price",
+            "op": {
+              "create": {
+                "req": True,
+                "type": "`$NUMBER`",
+              },
+              "update": {
+                "req": True,
+                "type": "`$NUMBER`",
+              },
+            },
+            "req": False,
+            "type": "`$NUMBER`",
+            "index$": 2,
+          },
+          {
+            "active": True,
+            "name": "self_link",
+            "req": False,
+            "type": "`$STRING`",
+            "index$": 3,
+          },
+        ],
+        "name": "product",
+        "op": {
+          "create": {
+            "input": "data",
+            "name": "create",
+            "points": [
+              {
+                "active": True,
+                "args": {},
+                "kind": "http",
+                "method": "POST",
+                "orig": "/shop/v2/products/",
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                ],
+                "select": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "index$": 0,
+              },
+            ],
+            "key$": "create",
+          },
+          "load": {
+            "input": "data",
+            "name": "load",
+            "points": [
+              {
+                "active": True,
+                "args": {
+                  "params": [
+                    {
+                      "active": True,
+                      "example": 22,
+                      "kind": "param",
+                      "name": "id",
+                      "orig": "product_id",
+                      "reqd": True,
+                      "type": "`$INTEGER`",
+                      "index$": 0,
+                    },
+                  ],
+                },
+                "kind": "http",
+                "method": "GET",
+                "orig": "/shop/v2/products/{productId}",
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "productId": "id",
+                  },
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "index$": 0,
+              },
+            ],
+            "key$": "load",
+          },
+          "patch": {
+            "input": "data",
+            "name": "patch",
+            "points": [
+              {
+                "active": True,
+                "args": {
+                  "params": [
+                    {
+                      "active": True,
+                      "example": 22,
+                      "kind": "param",
+                      "name": "id",
+                      "orig": "product_id",
+                      "reqd": True,
+                      "type": "`$INTEGER`",
+                    },
+                  ],
+                },
+                "kind": "http",
+                "method": "PATCH",
+                "orig": "/shop/v2/products/{productId}",
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "productId": "id",
+                  },
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "index$": 0,
+              },
+            ],
+            "key$": "patch",
+          },
+          "update": {
+            "input": "data",
+            "name": "update",
+            "points": [
+              {
+                "active": True,
+                "args": {
+                  "params": [
+                    {
+                      "active": True,
+                      "example": 22,
+                      "kind": "param",
+                      "name": "id",
+                      "orig": "product_id",
+                      "reqd": True,
+                      "type": "`$INTEGER`",
+                      "index$": 0,
+                    },
+                  ],
+                },
+                "kind": "http",
+                "method": "PUT",
+                "orig": "/shop/v2/products/{productId}",
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                  "{id}",
+                ],
+                "rename": {
+                  "param": {
+                    "productId": "id",
+                  },
+                },
+                "select": {
+                  "exist": [
+                    "id",
+                  ],
+                },
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "index$": 0,
+              },
+            ],
+            "key$": "update",
+          },
+        },
+        "relations": {
+          "ancestors": [],
+        },
+      },
+    },
+    }

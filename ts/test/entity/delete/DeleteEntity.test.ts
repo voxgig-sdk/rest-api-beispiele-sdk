@@ -26,8 +26,8 @@ import {
 describe('DeleteEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when RESTAPIBEISPIELE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('RESTAPIBEISPIELE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when REST_API_BEISPIELE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('REST_API_BEISPIELE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = RestApiBeispieleSDK.test()
@@ -39,7 +39,7 @@ describe('DeleteEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.REST_API_BEISPIELE_TEST_LIVE
-    for (const op of ['remove']) {
+    for (const op of []) {
       if (maybeSkipControl(t, 'entityOp', 'delete.' + op, live)) return
     }
 

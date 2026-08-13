@@ -215,9 +215,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local delete, err = client:Delete():load()
+    local product, err = client:Product():load({ id = "example_id" })
     if err then error(err) end
-    -- delete is the loaded record
+    -- product is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.

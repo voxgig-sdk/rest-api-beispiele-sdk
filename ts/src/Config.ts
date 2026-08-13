@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'RestApiBeispiele',
   }
 
 
@@ -79,6 +79,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "DELETE",
               "orig": "/shop/v2/products/{productId}",
               "parts": [
@@ -175,6 +176,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/shop/v2/products/",
               "parts": [
@@ -212,6 +214,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/shop/v2/products/{productId}",
               "parts": [
@@ -258,6 +261,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PATCH",
               "orig": "/shop/v2/products/{productId}",
               "parts": [
@@ -305,6 +309,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "PUT",
               "orig": "/shop/v2/products/{productId}",
               "parts": [

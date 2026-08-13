@@ -23,7 +23,7 @@ class DeleteEntityTest extends TestCase
         $setup = delete_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["remove"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "delete." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -33,7 +33,7 @@ class DeleteEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set RESTAPIBEISPIELE_TEST_DELETE_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set REST_API_BEISPIELE_TEST_DELETE_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -71,22 +71,22 @@ function delete_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("RESTAPIBEISPIELE_TEST_DELETE_ENTID");
+    $entid_env_raw = getenv("REST_API_BEISPIELE_TEST_DELETE_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "RESTAPIBEISPIELE_TEST_DELETE_ENTID" => $idmap,
-        "RESTAPIBEISPIELE_TEST_LIVE" => "FALSE",
-        "RESTAPIBEISPIELE_TEST_EXPLAIN" => "FALSE",
+        "REST_API_BEISPIELE_TEST_DELETE_ENTID" => $idmap,
+        "REST_API_BEISPIELE_TEST_LIVE" => "FALSE",
+        "REST_API_BEISPIELE_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["RESTAPIBEISPIELE_TEST_DELETE_ENTID"]);
+        $env["REST_API_BEISPIELE_TEST_DELETE_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["RESTAPIBEISPIELE_TEST_LIVE"] === "TRUE") {
+    if ($env["REST_API_BEISPIELE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -95,13 +95,13 @@ function delete_basic_setup($extra)
         $client = new RestApiBeispieleSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["RESTAPIBEISPIELE_TEST_LIVE"] === "TRUE";
+    $live = $env["REST_API_BEISPIELE_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["RESTAPIBEISPIELE_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["REST_API_BEISPIELE_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

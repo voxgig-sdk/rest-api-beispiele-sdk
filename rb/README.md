@@ -115,7 +115,8 @@ client = RestApiBeispieleSDK.test({
   "entity" => { "product" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 product = client.Product.load({ "id" => "test01" })
 puts product
 ```
@@ -294,7 +295,7 @@ Create an instance: `product = client.Product`
 #### Example: Load
 
 ```ruby
-# load returns the bare Product record (raises on error).
+# load returns the ENTITY — call data_get for the Product record (raises on error).
 product = client.Product.load({ "id" => 1 })
 ```
 

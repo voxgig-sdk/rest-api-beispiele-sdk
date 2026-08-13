@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import RestApiBeispieleSDK
-from core.error import RestApiBeispieleError
-from core.result import RestApiBeispieleResult
-from core.response import RestApiBeispieleResponse
-from core.spec import RestApiBeispieleSpec
-from feature.base_feature import RestApiBeispieleBaseFeature
+from projectname_sdk.core.error import RestApiBeispieleError
+from projectname_sdk.core.result import RestApiBeispieleResult
+from projectname_sdk.core.response import RestApiBeispieleResponse
+from projectname_sdk.core.spec import RestApiBeispieleSpec
+from projectname_sdk.feature.base_feature import RestApiBeispieleBaseFeature
 
 
 def _client():

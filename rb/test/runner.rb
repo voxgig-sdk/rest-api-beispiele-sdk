@@ -23,8 +23,8 @@ module RestApiBeispieleTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("RESTAPIBEISPIELE_TEST_LIVE")
-    override = getenv("RESTAPIBEISPIELE_TEST_OVERRIDE")
+    live = getenv("REST_API_BEISPIELE_TEST_LIVE")
+    override = getenv("REST_API_BEISPIELE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module RestApiBeispieleTestRunner
       end
     end
 
-    explain = getenv("RESTAPIBEISPIELE_TEST_EXPLAIN")
-    m["RESTAPIBEISPIELE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("REST_API_BEISPIELE_TEST_EXPLAIN")
+    m["REST_API_BEISPIELE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

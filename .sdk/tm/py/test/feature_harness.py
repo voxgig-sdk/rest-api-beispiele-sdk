@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import RestApiBeispieleControl
-from core.error import RestApiBeispieleError
-from core.result import RestApiBeispieleResult
-from core.spec import RestApiBeispieleSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import RestApiBeispieleControl
+from projectname_sdk.core.error import RestApiBeispieleError
+from projectname_sdk.core.result import RestApiBeispieleResult
+from projectname_sdk.core.spec import RestApiBeispieleSpec
 
 
 # True when this SDK was generated with the named feature.

@@ -43,8 +43,8 @@ class RestApiBeispieleTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('RESTAPIBEISPIELE_TEST_LIVE');
-        $override = self::getenv('RESTAPIBEISPIELE_TEST_OVERRIDE');
+        $live = self::getenv('REST_API_BEISPIELE_TEST_LIVE');
+        $override = self::getenv('REST_API_BEISPIELE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class RestApiBeispieleTestRunner
             }
         }
 
-        $explain = self::getenv('RESTAPIBEISPIELE_TEST_EXPLAIN');
+        $explain = self::getenv('REST_API_BEISPIELE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['RESTAPIBEISPIELE_TEST_EXPLAIN'] = $explain;
+            $m['REST_API_BEISPIELE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

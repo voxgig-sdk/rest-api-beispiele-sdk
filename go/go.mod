@@ -1,4 +1,4 @@
 module github.com/voxgig-sdk/rest-api-beispiele-sdk/go
 
-go 1.20
+go 1.21
 

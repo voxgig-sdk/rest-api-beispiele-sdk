@@ -53,6 +53,7 @@ class RestApiBeispieleConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/shop/v2/products/{productId}',
                   'parts' => [
@@ -149,6 +150,7 @@ class RestApiBeispieleConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/shop/v2/products/',
                   'parts' => [
@@ -186,6 +188,7 @@ class RestApiBeispieleConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/shop/v2/products/{productId}',
                   'parts' => [
@@ -232,6 +235,7 @@ class RestApiBeispieleConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/shop/v2/products/{productId}',
                   'parts' => [
@@ -279,6 +283,7 @@ class RestApiBeispieleConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'PUT',
                   'orig' => '/shop/v2/products/{productId}',
                   'parts' => [

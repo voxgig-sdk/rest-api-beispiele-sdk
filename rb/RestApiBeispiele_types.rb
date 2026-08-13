@@ -76,8 +76,20 @@ ProductCreateData = Struct.new(
 #
 # @!attribute [rw] id
 #   @return [Integer]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] price
+#   @return [Float, nil]
+#
+# @!attribute [rw] self_link
+#   @return [String, nil]
 ProductUpdateData = Struct.new(
   :id,
+  :name,
+  :price,
+  :self_link,
   keyword_init: true
 )
 
