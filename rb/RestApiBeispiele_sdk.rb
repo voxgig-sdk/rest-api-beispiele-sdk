@@ -28,7 +28,7 @@ class RestApiBeispieleSDK
     utility = RestApiBeispieleUtility.new
     @_utility = utility
 
-    config = RestApiBeispieleConfig.make_config
+    config = RestApiBeispieleConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

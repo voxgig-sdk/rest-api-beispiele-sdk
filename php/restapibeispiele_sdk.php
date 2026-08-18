@@ -40,7 +40,7 @@ class RestApiBeispieleSDK
         $utility = new RestApiBeispieleUtility();
         $this->_utility = $utility;
 
-        $config = RestApiBeispieleConfig::make_config();
+        $config = RestApiBeispieleConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
