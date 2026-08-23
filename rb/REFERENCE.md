@@ -143,10 +143,10 @@ product = client.Product
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `Integer` | No |  |
-| `name` | `String` | No |  |
-| `price` | `Float` | No |  |
-| `self_link` | `String` | No |  |
+| `id` | `Integer` | No | Eindeutige ID des Produkts |
+| `name` | `String` | No | Name des Produkts |
+| `price` | `Float` | No | Preis des Produkts |
+| `self_link` | `String` | No | Selbstreferenz-Link zur Ressource |
 
 ### Field Usage by Operation
 

@@ -147,10 +147,10 @@ fmt.Println(product.GetName()) // "product"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `price` | `float64` | No |  |
-| `self_link` | `string` | No |  |
+| `id` | `int` | No | Eindeutige ID des Produkts |
+| `name` | `string` | No | Name des Produkts |
+| `price` | `float64` | No | Preis des Produkts |
+| `self_link` | `string` | No | Selbstreferenz-Link zur Ressource |
 
 ### Field Usage by Operation
 

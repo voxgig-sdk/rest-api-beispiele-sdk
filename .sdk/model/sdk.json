@@ -98,6 +98,7 @@
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Eindeutige ID des Produkts",
               "type": "`$INTEGER`"
             },
             {
@@ -114,6 +115,7 @@
                 }
               },
               "req": false,
+              "short": "Name des Produkts",
               "type": "`$STRING`"
             },
             {
@@ -130,12 +132,14 @@
                 }
               },
               "req": false,
+              "short": "Preis des Produkts",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "self_link",
               "req": false,
+              "short": "Selbstreferenz-Link zur Ressource",
               "type": "`$STRING`"
             }
           ],

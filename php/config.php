@@ -33,6 +33,9 @@ class RestApiBeispieleConfig
         return [
             "main" => [
                 "name" => "RestApiBeispiele",
+                "slug" => "rest-api-beispiele",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -112,6 +115,7 @@ class RestApiBeispieleConfig
           'fields' => [
             [
               'name' => 'id',
+              'short' => 'Eindeutige ID des Produkts',
               'type' => '`$INTEGER`',
             ],
             [
@@ -126,6 +130,7 @@ class RestApiBeispieleConfig
                   'type' => '`$STRING`',
                 ],
               ],
+              'short' => 'Name des Produkts',
               'type' => '`$STRING`',
             ],
             [
@@ -140,10 +145,12 @@ class RestApiBeispieleConfig
                   'type' => '`$NUMBER`',
                 ],
               ],
+              'short' => 'Preis des Produkts',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'self_link',
+              'short' => 'Selbstreferenz-Link zur Ressource',
               'type' => '`$STRING`',
             ],
           ],

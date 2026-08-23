@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'RestApiBeispiele',
+        slug: "rest-api-beispiele",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -115,6 +126,7 @@ class Config {
       "fields": [
         {
           "name": "id",
+          "short": "Eindeutige ID des Produkts",
           "type": "`$INTEGER`"
         },
         {
@@ -129,6 +141,7 @@ class Config {
               "type": "`$STRING`"
             }
           },
+          "short": "Name des Produkts",
           "type": "`$STRING`"
         },
         {
@@ -143,10 +156,12 @@ class Config {
               "type": "`$NUMBER`"
             }
           },
+          "short": "Preis des Produkts",
           "type": "`$NUMBER`"
         },
         {
           "name": "self_link",
+          "short": "Selbstreferenz-Link zur Ressource",
           "type": "`$STRING`"
         }
       ],

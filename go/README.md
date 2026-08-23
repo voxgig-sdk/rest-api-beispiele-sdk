@@ -6,7 +6,7 @@ The Golang SDK for the RestApiBeispiele API — an entity-oriented client using 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Delete(nil)` — each with the same small set of operations (`Load`, `Create`, `Update`, `Remove`, `Patch`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -271,10 +271,10 @@ API path: `/shop/v2/products/{productId}`
 
 | Field | Description |
 | --- | --- |
-| `"id"` |  |
-| `"name"` |  |
-| `"price"` |  |
-| `"self_link"` |  |
+| `"id"` | Eindeutige ID des Produkts |
+| `"name"` | Name des Produkts |
+| `"price"` | Preis des Produkts |
+| `"self_link"` | Selbstreferenz-Link zur Ressource |
 
 Operations: Create, Load, Patch, Update.
 
@@ -312,10 +312,10 @@ Create an instance: `product := client.Product(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int` |  |
-| `name` | `string` |  |
-| `price` | `float64` |  |
-| `self_link` | `string` |  |
+| `id` | `int` | Eindeutige ID des Produkts |
+| `name` | `string` | Name des Produkts |
+| `price` | `float64` | Preis des Produkts |
+| `self_link` | `string` | Selbstreferenz-Link zur Ressource |
 
 #### Example: Load
 

@@ -19,6 +19,9 @@ module RestApiBeispieleConfig
     {
       "main" => {
         "name" => "RestApiBeispiele",
+        "slug" => "rest-api-beispiele",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -98,6 +101,7 @@ module RestApiBeispieleConfig
           "fields" => [
             {
               "name" => "id",
+              "short" => "Eindeutige ID des Produkts",
               "type" => "`$INTEGER`",
             },
             {
@@ -112,6 +116,7 @@ module RestApiBeispieleConfig
                   "type" => "`$STRING`",
                 },
               },
+              "short" => "Name des Produkts",
               "type" => "`$STRING`",
             },
             {
@@ -126,10 +131,12 @@ module RestApiBeispieleConfig
                   "type" => "`$NUMBER`",
                 },
               },
+              "short" => "Preis des Produkts",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "self_link",
+              "short" => "Selbstreferenz-Link zur Ressource",
               "type" => "`$STRING`",
             },
           ],

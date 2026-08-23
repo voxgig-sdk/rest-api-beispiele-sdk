@@ -142,10 +142,10 @@ $product = $client->Product();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `int` | No |  |
-| `name` | `string` | No |  |
-| `price` | `float` | No |  |
-| `self_link` | `string` | No |  |
+| `id` | `int` | No | Eindeutige ID des Produkts |
+| `name` | `string` | No | Name des Produkts |
+| `price` | `float` | No | Preis des Produkts |
+| `self_link` | `string` | No | Selbstreferenz-Link zur Ressource |
 
 ### Field Usage by Operation
 

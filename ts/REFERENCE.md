@@ -172,10 +172,10 @@ const product = client.Product()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id` | `number` | No |  |
-| `name` | `string` | No |  |
-| `price` | `number` | No |  |
-| `self_link` | `string` | No |  |
+| `id` | `number` | No | Eindeutige ID des Produkts |
+| `name` | `string` | No | Name des Produkts |
+| `price` | `number` | No | Preis des Produkts |
+| `self_link` | `string` | No | Selbstreferenz-Link zur Ressource |
 
 ### Field Usage by Operation
 

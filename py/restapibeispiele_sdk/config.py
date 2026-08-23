@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "RestApiBeispiele",
+            "slug": "rest-api-beispiele",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -107,6 +110,7 @@ def make_config():
         "fields": [
           {
             "name": "id",
+            "short": "Eindeutige ID des Produkts",
             "type": "`$INTEGER`",
           },
           {
@@ -121,6 +125,7 @@ def make_config():
                 "type": "`$STRING`",
               },
             },
+            "short": "Name des Produkts",
             "type": "`$STRING`",
           },
           {
@@ -135,10 +140,12 @@ def make_config():
                 "type": "`$NUMBER`",
               },
             },
+            "short": "Preis des Produkts",
             "type": "`$NUMBER`",
           },
           {
             "name": "self_link",
+            "short": "Selbstreferenz-Link zur Ressource",
             "type": "`$STRING`",
           },
         ],

@@ -249,10 +249,10 @@ API path: `/shop/v2/products/{productId}`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
-| `price` |  |
-| `self_link` |  |
+| `id` | Eindeutige ID des Produkts |
+| `name` | Name des Produkts |
+| `price` | Preis des Produkts |
+| `self_link` | Selbstreferenz-Link zur Ressource |
 
 Operations: Create, Load, Patch, Update.
 
@@ -290,10 +290,10 @@ Create an instance: `product = client.Product()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `int` |  |
-| `name` | `str` |  |
-| `price` | `float` |  |
-| `self_link` | `str` |  |
+| `id` | `int` | Eindeutige ID des Produkts |
+| `name` | `str` | Name des Produkts |
+| `price` | `float` | Preis des Produkts |
+| `self_link` | `str` | Selbstreferenz-Link zur Ressource |
 
 #### Example: Load
 

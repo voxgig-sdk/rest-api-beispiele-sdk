@@ -237,10 +237,10 @@ API path: `/shop/v2/products/{productId}`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
-| `price` |  |
-| `self_link` |  |
+| `id` | Eindeutige ID des Produkts |
+| `name` | Name des Produkts |
+| `price` | Preis des Produkts |
+| `self_link` | Selbstreferenz-Link zur Ressource |
 
 Operations: Create, Load, Patch, Update.
 
@@ -278,10 +278,10 @@ Create an instance: `local product = client:Product(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `price` | `number` |  |
-| `self_link` | `string` |  |
+| `id` | `number` | Eindeutige ID des Produkts |
+| `name` | `string` | Name des Produkts |
+| `price` | `number` | Preis des Produkts |
+| `self_link` | `string` | Selbstreferenz-Link zur Ressource |
 
 #### Example: Load
 

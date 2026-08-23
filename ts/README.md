@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -295,10 +295,10 @@ API path: `/shop/v2/products/{productId}`
 
 | Field | Description |
 | --- | --- |
-| `id` |  |
-| `name` |  |
-| `price` |  |
-| `self_link` |  |
+| `id` | Eindeutige ID des Produkts |
+| `name` | Name des Produkts |
+| `price` | Preis des Produkts |
+| `self_link` | Selbstreferenz-Link zur Ressource |
 
 Operations: create, load, patch, update.
 
@@ -336,10 +336,10 @@ Create an instance: `const product = client.Product()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id` | `number` |  |
-| `name` | `string` |  |
-| `price` | `number` |  |
-| `self_link` | `string` |  |
+| `id` | `number` | Eindeutige ID des Produkts |
+| `name` | `string` | Name des Produkts |
+| `price` | `number` | Preis des Produkts |
+| `self_link` | `string` | Selbstreferenz-Link zur Ressource |
 
 #### Example: Load
 
