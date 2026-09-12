@@ -1,6 +1,14 @@
 # RestApiBeispiele SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -75,17 +83,25 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/shop/v2/products/{productId}",
-                "parts": [
-                  "shop",
-                  "v2",
-                  "products",
-                  "{product_id}",
-                ],
                 "rename": {
                   "param": {
                     "productId": "product_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "shop",
+                  },
+                  {
+                    "lit": "v2",
+                  },
+                  {
+                    "lit": "products",
+                  },
+                  {
+                    "var": "product_id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "product_id",
@@ -95,6 +111,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                  "{product_id}",
+                ],
               },
             ],
           },
@@ -130,6 +152,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "double",
             "name": "price",
             "op": {
               "create": {
@@ -150,6 +173,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "product",
         "op": {
           "create": {
@@ -161,16 +188,27 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/shop/v2/products/",
-                "parts": [
-                  "shop",
-                  "v2",
-                  "products",
+                "segments": [
+                  {
+                    "lit": "shop",
+                  },
+                  {
+                    "lit": "v2",
+                  },
+                  {
+                    "lit": "products",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                ],
               },
             ],
           },
@@ -194,17 +232,25 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/shop/v2/products/{productId}",
-                "parts": [
-                  "shop",
-                  "v2",
-                  "products",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "productId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "shop",
+                  },
+                  {
+                    "lit": "v2",
+                  },
+                  {
+                    "lit": "products",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -214,6 +260,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -237,17 +289,25 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/shop/v2/products/{productId}",
-                "parts": [
-                  "shop",
-                  "v2",
-                  "products",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "productId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "shop",
+                  },
+                  {
+                    "lit": "v2",
+                  },
+                  {
+                    "lit": "products",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -257,6 +317,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -280,17 +346,25 @@ def make_config():
                 "kind": "http",
                 "method": "PUT",
                 "orig": "/shop/v2/products/{productId}",
-                "parts": [
-                  "shop",
-                  "v2",
-                  "products",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "productId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "shop",
+                  },
+                  {
+                    "lit": "v2",
+                  },
+                  {
+                    "lit": "products",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -300,6 +374,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "shop",
+                  "v2",
+                  "products",
+                  "{id}",
+                ],
               },
             ],
           },

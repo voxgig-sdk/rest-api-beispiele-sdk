@@ -80,15 +80,23 @@ class RestApiBeispieleConfig
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/shop/v2/products/{productId}',
-                  'parts' => [
-                    'shop',
-                    'v2',
-                    'products',
-                    '{product_id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'productId' => 'product_id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'shop',
+                    ],
+                    [
+                      'lit' => 'v2',
+                    ],
+                    [
+                      'lit' => 'products',
+                    ],
+                    [
+                      'var' => 'product_id',
                     ],
                   ],
                   'select' => [
@@ -99,6 +107,12 @@ class RestApiBeispieleConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'shop',
+                    'v2',
+                    'products',
+                    '{product_id}',
                   ],
                 ],
               ],
@@ -135,6 +149,7 @@ class RestApiBeispieleConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'double',
               'name' => 'price',
               'op' => [
                 'create' => [
@@ -155,6 +170,10 @@ class RestApiBeispieleConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'product',
           'op' => [
             'create' => [
@@ -166,15 +185,26 @@ class RestApiBeispieleConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/shop/v2/products/',
-                  'parts' => [
-                    'shop',
-                    'v2',
-                    'products',
+                  'segments' => [
+                    [
+                      'lit' => 'shop',
+                    ],
+                    [
+                      'lit' => 'v2',
+                    ],
+                    [
+                      'lit' => 'products',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'shop',
+                    'v2',
+                    'products',
                   ],
                 ],
               ],
@@ -199,15 +229,23 @@ class RestApiBeispieleConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/shop/v2/products/{productId}',
-                  'parts' => [
-                    'shop',
-                    'v2',
-                    'products',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'productId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'shop',
+                    ],
+                    [
+                      'lit' => 'v2',
+                    ],
+                    [
+                      'lit' => 'products',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -218,6 +256,12 @@ class RestApiBeispieleConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'shop',
+                    'v2',
+                    'products',
+                    '{id}',
                   ],
                 ],
               ],
@@ -242,15 +286,23 @@ class RestApiBeispieleConfig
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/shop/v2/products/{productId}',
-                  'parts' => [
-                    'shop',
-                    'v2',
-                    'products',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'productId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'shop',
+                    ],
+                    [
+                      'lit' => 'v2',
+                    ],
+                    [
+                      'lit' => 'products',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -261,6 +313,12 @@ class RestApiBeispieleConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'shop',
+                    'v2',
+                    'products',
+                    '{id}',
                   ],
                 ],
               ],
@@ -285,15 +343,23 @@ class RestApiBeispieleConfig
                   'kind' => 'http',
                   'method' => 'PUT',
                   'orig' => '/shop/v2/products/{productId}',
-                  'parts' => [
-                    'shop',
-                    'v2',
-                    'products',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'productId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'shop',
+                    ],
+                    [
+                      'lit' => 'v2',
+                    ],
+                    [
+                      'lit' => 'products',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -304,6 +370,12 @@ class RestApiBeispieleConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'shop',
+                    'v2',
+                    'products',
+                    '{id}',
                   ],
                 ],
               ],

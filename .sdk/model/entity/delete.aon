@@ -24,17 +24,25 @@ main: kit: entity: delete: {
           }
           method: "DELETE"
           orig: "/shop/v2/products/{productId}"
-          parts: [
-            "shop"
-            "v2"
-            "products"
-            "{product_id}"
-          ]
           rename: {
             param: {
               productId: "product_id"
             }
           }
+          segments: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "product_id"
+            }
+          ]
           select: {
             exist: [
               "product_id"

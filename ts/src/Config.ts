@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -91,17 +102,25 @@ class Config {
               "kind": "http",
               "method": "DELETE",
               "orig": "/shop/v2/products/{productId}",
-              "parts": [
-                "shop",
-                "v2",
-                "products",
-                "{product_id}"
-              ],
               "rename": {
                 "param": {
                   "productId": "product_id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "shop"
+                },
+                {
+                  "lit": "v2"
+                },
+                {
+                  "lit": "products"
+                },
+                {
+                  "var": "product_id"
+                }
+              ],
               "select": {
                 "exist": [
                   "product_id"
@@ -110,7 +129,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "shop",
+                "v2",
+                "products",
+                "{product_id}"
+              ]
             }
           ]
         }
@@ -146,6 +171,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "double",
           "name": "price",
           "op": {
             "create": {
@@ -166,6 +192,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "product",
       "op": {
         "create": {
@@ -177,16 +207,27 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/shop/v2/products/",
-              "parts": [
-                "shop",
-                "v2",
-                "products"
+              "segments": [
+                {
+                  "lit": "shop"
+                },
+                {
+                  "lit": "v2"
+                },
+                {
+                  "lit": "products"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "shop",
+                "v2",
+                "products"
+              ]
             }
           ]
         },
@@ -210,17 +251,25 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/shop/v2/products/{productId}",
-              "parts": [
-                "shop",
-                "v2",
-                "products",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "productId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "shop"
+                },
+                {
+                  "lit": "v2"
+                },
+                {
+                  "lit": "products"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -229,7 +278,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "shop",
+                "v2",
+                "products",
+                "{id}"
+              ]
             }
           ]
         },
@@ -253,17 +308,25 @@ class Config {
               "kind": "http",
               "method": "PATCH",
               "orig": "/shop/v2/products/{productId}",
-              "parts": [
-                "shop",
-                "v2",
-                "products",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "productId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "shop"
+                },
+                {
+                  "lit": "v2"
+                },
+                {
+                  "lit": "products"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -272,7 +335,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "shop",
+                "v2",
+                "products",
+                "{id}"
+              ]
             }
           ]
         },
@@ -296,17 +365,25 @@ class Config {
               "kind": "http",
               "method": "PUT",
               "orig": "/shop/v2/products/{productId}",
-              "parts": [
-                "shop",
-                "v2",
-                "products",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "productId": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "shop"
+                },
+                {
+                  "lit": "v2"
+                },
+                {
+                  "lit": "products"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -315,7 +392,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "shop",
+                "v2",
+                "products",
+                "{id}"
+              ]
             }
           ]
         }
@@ -331,6 +414,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

@@ -28,6 +28,7 @@ main: kit: entity: product: {
       type: "`$STRING`"
     }
     {
+      format: "double"
       name: "price"
       op: {
         create: {
@@ -64,10 +65,16 @@ main: kit: entity: product: {
         {
           method: "POST"
           orig: "/shop/v2/products/"
-          parts: [
-            "shop"
-            "v2"
-            "products"
+          segments: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -94,17 +101,25 @@ main: kit: entity: product: {
           }
           method: "GET"
           orig: "/shop/v2/products/{productId}"
-          parts: [
-            "shop"
-            "v2"
-            "products"
-            "{id}"
-          ]
           rename: {
             param: {
               productId: "id"
             }
           }
+          segments: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -135,17 +150,25 @@ main: kit: entity: product: {
           }
           method: "PATCH"
           orig: "/shop/v2/products/{productId}"
-          parts: [
-            "shop"
-            "v2"
-            "products"
-            "{id}"
-          ]
           rename: {
             param: {
               productId: "id"
             }
           }
+          segments: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -176,17 +199,25 @@ main: kit: entity: product: {
           }
           method: "PUT"
           orig: "/shop/v2/products/{productId}"
-          parts: [
-            "shop"
-            "v2"
-            "products"
-            "{id}"
-          ]
           rename: {
             param: {
               productId: "id"
             }
           }
+          segments: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
