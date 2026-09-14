@@ -104,7 +104,7 @@ local result, err = client:Product():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases) |
+| TypeScript | `@voxgig-sdk/rest-api-beispiele-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases) |
 | Python | `voxgig-sdk-rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases) |
 | PHP | `voxgig-sdk/rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/rest-api-beispiele-sdk/go` | `go get github.com/voxgig-sdk/rest-api-beispiele-sdk/go@latest` |
@@ -118,7 +118,7 @@ local result, err = client:Product():load({ id = "test01" })
 ### TypeScript
 
 ```ts
-import { RestApiBeispieleSDK } from '@voxgig-sdk/rest-api-beispiele'
+import { RestApiBeispieleSDK } from '@voxgig-sdk/rest-api-beispiele-sdk'
 
 const client = new RestApiBeispieleSDK()
 

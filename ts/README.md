@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { RestApiBeispieleSDK } from '@voxgig-sdk/rest-api-beispiele'
+import { RestApiBeispieleSDK } from '@voxgig-sdk/rest-api-beispiele-sdk'
 
 const client = new RestApiBeispieleSDK()
 ```
@@ -437,7 +437,7 @@ rest-api-beispiele/
 Import the SDK from the package root:
 
 ```ts
-import { RestApiBeispieleSDK } from '@voxgig-sdk/rest-api-beispiele'
+import { RestApiBeispieleSDK } from '@voxgig-sdk/rest-api-beispiele-sdk'
 ```
 
 ### Entity state
