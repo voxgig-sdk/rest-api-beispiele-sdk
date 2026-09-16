@@ -29,5 +29,374 @@
         "self_link": "sa3"
       }
     }
+  },
+  "requests": {
+    "POST /shop/v2/products/": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "createProduct",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Wild-berries",
+                "price": 4.99
+              },
+              "schema": {
+                "properties": {
+                  "name": {
+                    "description": "Name des Produkts",
+                    "example": "Wild-berries",
+                    "type": "string"
+                  },
+                  "price": {
+                    "description": "Preis des Produkts",
+                    "example": 4.99,
+                    "format": "double",
+                    "minimum": 0,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "price"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 22,
+                  "name": "Wild-berries",
+                  "price": 4.99,
+                  "self_link": "/shop/v2/products/22"
+                },
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "description": "Eindeutige ID des Produkts",
+                      "example": 22,
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name des Produkts",
+                      "example": "Wild-berries",
+                      "type": "string"
+                    },
+                    "price": {
+                      "description": "Preis des Produkts",
+                      "example": 4.99,
+                      "format": "double",
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "self_link": {
+                      "description": "Selbstreferenz-Link zur Ressource",
+                      "example": "/shop/v2/products/22",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Created - Produkt wurde erfolgreich angelegt",
+            "headers": {
+              "Location": {
+                "description": "URI der neu angelegten Ressource",
+                "schema": {
+                  "example": "/shop/v2/products/22",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - Ungültige Eingabedaten"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /shop/v2/products/{productId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getProduct",
+        "parameters": [
+          {
+            "description": "Die ID des Produkts",
+            "in": "path",
+            "name": "productId",
+            "required": true,
+            "schema": {
+              "example": 22,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 22,
+                  "name": "Wild-berries",
+                  "price": 4.99,
+                  "self_link": "/shop/v2/products/22"
+                },
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "description": "Eindeutige ID des Produkts",
+                      "example": 22,
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name des Produkts",
+                      "example": "Wild-berries",
+                      "type": "string"
+                    },
+                    "price": {
+                      "description": "Preis des Produkts",
+                      "example": 4.99,
+                      "format": "double",
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "self_link": {
+                      "description": "Selbstreferenz-Link zur Ressource",
+                      "example": "/shop/v2/products/22",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK - Produkt erfolgreich abgerufen"
+          },
+          "404": {
+            "description": "Not Found - Produkt nicht gefunden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PATCH /shop/v2/products/{productId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "partialUpdateProduct",
+        "parameters": [
+          {
+            "description": "Die ID des Produkts",
+            "in": "path",
+            "name": "productId",
+            "required": true,
+            "schema": {
+              "example": 22,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "price": 1.99
+              },
+              "schema": {
+                "description": "Objekt für partielle Aktualisierung. Nur die zu ändernden Felder müssen angegeben werden.",
+                "properties": {
+                  "name": {
+                    "description": "Name des Produkts",
+                    "example": "Wild-berries",
+                    "type": "string"
+                  },
+                  "price": {
+                    "description": "Preis des Produkts",
+                    "example": 1.99,
+                    "format": "double",
+                    "minimum": 0,
+                    "type": "number"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 22,
+                  "name": "Wild-berries",
+                  "price": 1.99
+                },
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "description": "Eindeutige ID des Produkts",
+                      "example": 22,
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name des Produkts",
+                      "example": "Wild-berries",
+                      "type": "string"
+                    },
+                    "price": {
+                      "description": "Preis des Produkts",
+                      "example": 4.99,
+                      "format": "double",
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "self_link": {
+                      "description": "Selbstreferenz-Link zur Ressource",
+                      "example": "/shop/v2/products/22",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK - Produkt wurde erfolgreich teilweise aktualisiert"
+          },
+          "400": {
+            "description": "Bad Request - Ungültige Eingabedaten"
+          },
+          "404": {
+            "description": "Not Found - Produkt nicht gefunden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "PUT /shop/v2/products/{productId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "updateProduct",
+        "parameters": [
+          {
+            "description": "Die ID des Produkts",
+            "in": "path",
+            "name": "productId",
+            "required": true,
+            "schema": {
+              "example": 22,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "example": {
+                "name": "Wild-berries",
+                "price": 2.99
+              },
+              "schema": {
+                "properties": {
+                  "name": {
+                    "description": "Name des Produkts",
+                    "example": "Wild-berries",
+                    "type": "string"
+                  },
+                  "price": {
+                    "description": "Preis des Produkts",
+                    "example": 4.99,
+                    "format": "double",
+                    "minimum": 0,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "price"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 22,
+                  "name": "Wild-berries",
+                  "price": 2.99,
+                  "self_link": "/shop/v2/products/22"
+                },
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "description": "Eindeutige ID des Produkts",
+                      "example": 22,
+                      "type": "integer"
+                    },
+                    "name": {
+                      "description": "Name des Produkts",
+                      "example": "Wild-berries",
+                      "type": "string"
+                    },
+                    "price": {
+                      "description": "Preis des Produkts",
+                      "example": 4.99,
+                      "format": "double",
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "self_link": {
+                      "description": "Selbstreferenz-Link zur Ressource",
+                      "example": "/shop/v2/products/22",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "OK - Produkt wurde erfolgreich aktualisiert"
+          },
+          "400": {
+            "description": "Bad Request - Ungültige Eingabedaten"
+          },
+          "404": {
+            "description": "Not Found - Produkt nicht gefunden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

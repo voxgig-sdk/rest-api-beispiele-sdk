@@ -1,12 +1,18 @@
 # RestApiBeispiele SDK feature factory
 
 from restapibeispiele_sdk.feature.base_feature import RestApiBeispieleBaseFeature
+from restapibeispiele_sdk.feature.ratelimit_feature import RestApiBeispieleRatelimitFeature
+from restapibeispiele_sdk.feature.retry_feature import RestApiBeispieleRetryFeature
 from restapibeispiele_sdk.feature.test_feature import RestApiBeispieleTestFeature
+from restapibeispiele_sdk.feature.timeout_feature import RestApiBeispieleTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: RestApiBeispieleBaseFeature(),
+    "ratelimit": lambda: RestApiBeispieleRatelimitFeature(),
+    "retry": lambda: RestApiBeispieleRetryFeature(),
     "test": lambda: RestApiBeispieleTestFeature(),
+    "timeout": lambda: RestApiBeispieleTimeoutFeature(),
 }
 
 
