@@ -1,4 +1,4 @@
 # Entity Models
 
-@"delete.aon"
-@"product.aon"
+@"./delete.aon"
+@"./product.aon"

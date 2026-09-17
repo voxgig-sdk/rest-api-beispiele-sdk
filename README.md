@@ -104,12 +104,12 @@ local result, err = client:Product():load({ id = "test01" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/rest-api-beispiele-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases) |
-| Python | `voxgig-sdk-rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases) |
-| PHP | `voxgig-sdk/rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases) |
+| TypeScript | `@voxgig-sdk/rest-api-beispiele-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/tags) |
+| Python | `voxgig-sdk-rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/tags) |
+| PHP | `voxgig-sdk/rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/rest-api-beispiele-sdk/go` | `go get github.com/voxgig-sdk/rest-api-beispiele-sdk/go@latest` |
-| Ruby | `voxgig-sdk-rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases) |
-| Lua | `voxgig-sdk-rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/releases) |
+| Ruby | `voxgig-sdk-rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/tags) |
+| Lua | `voxgig-sdk-rest-api-beispiele` | publish pending — [install from git tag](https://github.com/voxgig-sdk/rest-api-beispiele-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/rest-api-beispiele-sdk/go-cli` | `go install github.com/voxgig-sdk/rest-api-beispiele-sdk/go-cli/cmd/rest-api-beispiele@latest` |
 | Go MCP server | `github.com/voxgig-sdk/rest-api-beispiele-sdk/go-mcp` | `go get github.com/voxgig-sdk/rest-api-beispiele-sdk/go-mcp@latest` |
 

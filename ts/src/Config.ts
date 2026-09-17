@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      delete: {
-      },
-
-      product: {
-      },
-
+        delete: {
+        },
+  
+        product: {
+        },
+  
     }
   }
 
