@@ -119,26 +119,9 @@ class RestApiBeispieleConfig
               'name' => 'remove',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 22,
-                        'kind' => 'param',
-                        'name' => 'product_id',
-                        'orig' => 'product_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/shop/v2/products/{productId}',
-                  'rename' => [
-                    'param' => [
-                      'productId' => 'product_id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'shop',
@@ -153,20 +136,37 @@ class RestApiBeispieleConfig
                       'var' => 'product_id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'product_id',
+                  'parts' => [
+                    'shop',
+                    'v2',
+                    'products',
+                    '{product_id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'productId' => 'product_id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'shop',
-                    'v2',
-                    'products',
-                    '{product_id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'product_id',
+                        'orig' => 'product_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 22,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'product_id',
+                    ],
                   ],
                 ],
               ],
@@ -175,7 +175,7 @@ class RestApiBeispieleConfig
           'relations' => [
             'ancestors' => [
               [
-                'product',
+                '$.main.kit.entity.product',
               ],
             ],
           ],
@@ -184,11 +184,14 @@ class RestApiBeispieleConfig
           'fields' => [
             [
               'name' => 'id',
-              'short' => 'Eindeutige ID des Produkts',
+              'title' => 'Id',
               'type' => '`$INTEGER`',
+              'short' => 'Eindeutige ID des Produkts',
             ],
             [
               'name' => 'name',
+              'title' => 'Name',
+              'type' => '`$STRING`',
               'op' => [
                 'create' => [
                   'req' => true,
@@ -200,11 +203,11 @@ class RestApiBeispieleConfig
                 ],
               ],
               'short' => 'Name des Produkts',
-              'type' => '`$STRING`',
             ],
             [
-              'format' => 'double',
               'name' => 'price',
+              'title' => 'Price',
+              'type' => '`$NUMBER`',
               'op' => [
                 'create' => [
                   'req' => true,
@@ -216,12 +219,13 @@ class RestApiBeispieleConfig
                 ],
               ],
               'short' => 'Preis des Produkts',
-              'type' => '`$NUMBER`',
+              'format' => 'double',
             ],
             [
               'name' => 'self_link',
-              'short' => 'Selbstreferenz-Link zur Ressource',
+              'title' => 'Self Link',
               'type' => '`$STRING`',
+              'short' => 'Selbstreferenz-Link zur Ressource',
             ],
           ],
           'id' => [
@@ -235,7 +239,6 @@ class RestApiBeispieleConfig
               'name' => 'create',
               'points' => [
                 [
-                  'args' => [],
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/shop/v2/products/',
@@ -250,16 +253,18 @@ class RestApiBeispieleConfig
                       'lit' => 'products',
                     ],
                   ],
-                  'select' => [],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
                   'parts' => [
                     'shop',
                     'v2',
                     'products',
                   ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [],
+                  'select' => [],
                 ],
               ],
             ],
@@ -268,26 +273,9 @@ class RestApiBeispieleConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 22,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'product_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/shop/v2/products/{productId}',
-                  'rename' => [
-                    'param' => [
-                      'productId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'shop',
@@ -302,20 +290,37 @@ class RestApiBeispieleConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'shop',
+                    'v2',
+                    'products',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'productId' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'shop',
-                    'v2',
-                    'products',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'product_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 22,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -325,26 +330,9 @@ class RestApiBeispieleConfig
               'name' => 'patch',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 22,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'product_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/shop/v2/products/{productId}',
-                  'rename' => [
-                    'param' => [
-                      'productId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'shop',
@@ -359,20 +347,37 @@ class RestApiBeispieleConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'shop',
+                    'v2',
+                    'products',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'productId' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'shop',
-                    'v2',
-                    'products',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'product_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 22,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],
@@ -382,26 +387,9 @@ class RestApiBeispieleConfig
               'name' => 'update',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'example' => 22,
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'product_id',
-                        'reqd' => true,
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'PUT',
                   'orig' => '/shop/v2/products/{productId}',
-                  'rename' => [
-                    'param' => [
-                      'productId' => 'id',
-                    ],
-                  ],
                   'segments' => [
                     [
                       'lit' => 'shop',
@@ -416,20 +404,37 @@ class RestApiBeispieleConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
+                  'parts' => [
+                    'shop',
+                    'v2',
+                    'products',
+                    '{id}',
+                  ],
+                  'rename' => [
+                    'param' => [
+                      'productId' => 'id',
                     ],
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'shop',
-                    'v2',
-                    'products',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'product_id',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                        'example' => 22,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],

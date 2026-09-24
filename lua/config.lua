@@ -93,26 +93,9 @@ local function make_config()
             ["name"] = "remove",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = 22,
-                      ["kind"] = "param",
-                      ["name"] = "product_id",
-                      ["orig"] = "product_id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/shop/v2/products/{productId}",
-                ["rename"] = {
-                  ["param"] = {
-                    ["productId"] = "product_id",
-                  },
-                },
                 ["segments"] = {
                   {
                     ["lit"] = "shop",
@@ -127,20 +110,37 @@ local function make_config()
                     ["var"] = "product_id",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "product_id",
+                ["parts"] = {
+                  "shop",
+                  "v2",
+                  "products",
+                  "{product_id}",
+                },
+                ["rename"] = {
+                  ["param"] = {
+                    ["productId"] = "product_id",
                   },
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "shop",
-                  "v2",
-                  "products",
-                  "{product_id}",
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "product_id",
+                      ["orig"] = "product_id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = 22,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "product_id",
+                  },
                 },
               },
             },
@@ -149,7 +149,7 @@ local function make_config()
         ["relations"] = {
           ["ancestors"] = {
             {
-              "product",
+              "$.main.kit.entity.product",
             },
           },
         },
@@ -158,11 +158,14 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "id",
-            ["short"] = "Eindeutige ID des Produkts",
+            ["title"] = "Id",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Eindeutige ID des Produkts",
           },
           {
             ["name"] = "name",
+            ["title"] = "Name",
+            ["type"] = "`$STRING`",
             ["op"] = {
               ["create"] = {
                 ["req"] = true,
@@ -174,11 +177,11 @@ local function make_config()
               },
             },
             ["short"] = "Name des Produkts",
-            ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "double",
             ["name"] = "price",
+            ["title"] = "Price",
+            ["type"] = "`$NUMBER`",
             ["op"] = {
               ["create"] = {
                 ["req"] = true,
@@ -190,12 +193,13 @@ local function make_config()
               },
             },
             ["short"] = "Preis des Produkts",
-            ["type"] = "`$NUMBER`",
+            ["format"] = "double",
           },
           {
             ["name"] = "self_link",
-            ["short"] = "Selbstreferenz-Link zur Ressource",
+            ["title"] = "Self Link",
             ["type"] = "`$STRING`",
+            ["short"] = "Selbstreferenz-Link zur Ressource",
           },
         },
         ["id"] = {
@@ -209,7 +213,6 @@ local function make_config()
             ["name"] = "create",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/shop/v2/products/",
@@ -224,16 +227,18 @@ local function make_config()
                     ["lit"] = "products",
                   },
                 },
-                ["select"] = {},
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
-                },
                 ["parts"] = {
                   "shop",
                   "v2",
                   "products",
                 },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body`",
+                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -242,26 +247,9 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = 22,
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "product_id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/shop/v2/products/{productId}",
-                ["rename"] = {
-                  ["param"] = {
-                    ["productId"] = "id",
-                  },
-                },
                 ["segments"] = {
                   {
                     ["lit"] = "shop",
@@ -276,20 +264,37 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "id",
+                ["parts"] = {
+                  "shop",
+                  "v2",
+                  "products",
+                  "{id}",
+                },
+                ["rename"] = {
+                  ["param"] = {
+                    ["productId"] = "id",
                   },
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "shop",
-                  "v2",
-                  "products",
-                  "{id}",
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "product_id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = 22,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "id",
+                  },
                 },
               },
             },
@@ -299,26 +304,9 @@ local function make_config()
             ["name"] = "patch",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = 22,
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "product_id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/shop/v2/products/{productId}",
-                ["rename"] = {
-                  ["param"] = {
-                    ["productId"] = "id",
-                  },
-                },
                 ["segments"] = {
                   {
                     ["lit"] = "shop",
@@ -333,20 +321,37 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "id",
+                ["parts"] = {
+                  "shop",
+                  "v2",
+                  "products",
+                  "{id}",
+                },
+                ["rename"] = {
+                  ["param"] = {
+                    ["productId"] = "id",
                   },
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "shop",
-                  "v2",
-                  "products",
-                  "{id}",
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "product_id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = 22,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "id",
+                  },
                 },
               },
             },
@@ -356,26 +361,9 @@ local function make_config()
             ["name"] = "update",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = 22,
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "product_id",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "PUT",
                 ["orig"] = "/shop/v2/products/{productId}",
-                ["rename"] = {
-                  ["param"] = {
-                    ["productId"] = "id",
-                  },
-                },
                 ["segments"] = {
                   {
                     ["lit"] = "shop",
@@ -390,20 +378,37 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "id",
+                ["parts"] = {
+                  "shop",
+                  "v2",
+                  "products",
+                  "{id}",
+                },
+                ["rename"] = {
+                  ["param"] = {
+                    ["productId"] = "id",
                   },
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "shop",
-                  "v2",
-                  "products",
-                  "{id}",
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "product_id",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = 22,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "id",
+                  },
                 },
               },
             },

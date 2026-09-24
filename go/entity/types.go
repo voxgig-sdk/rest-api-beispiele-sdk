@@ -1,7 +1,7 @@
 // Typed models for the RestApiBeispiele SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -23,10 +23,6 @@ type DeleteRemoveMatch struct {
 
 // Product is the typed data model for the product entity.
 type Product struct {
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	SelfLink *string `json:"self_link,omitempty"`
 }
 
 // ProductLoadMatch is the typed request payload for Product.LoadTyped.

@@ -23,51 +23,8 @@
   "requests": {
     "DELETE /shop/v2/products/{productId}": {
       "provenance": "operation-contract",
-      "contract": {
-        "operationId": "deleteProduct",
-        "parameters": [
-          {
-            "description": "Die ID des Produkts",
-            "in": "path",
-            "name": "productId",
-            "required": true,
-            "schema": {
-              "example": 22,
-              "type": "integer"
-            }
-          }
-        ],
-        "protocol": "http",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "example": {
-                  "success": "Deleted"
-                },
-                "schema": {
-                  "properties": {
-                    "success": {
-                      "description": "Bestätigung der erfolgreichen Löschung",
-                      "example": "Deleted",
-                      "type": "string"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "OK - Produkt wurde erfolgreich gelöscht"
-          },
-          "404": {
-            "description": "Not Found - Produkt nicht gefunden"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        },
-        "securitySource": "unspecified"
-      }
+      "version": 2,
+      "source": "openapi3"
     }
   }
 }

@@ -97,26 +97,9 @@ func MakeConfig() map[string]any {
 						"name": "remove",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": 22,
-											"kind": "param",
-											"name": "product_id",
-											"orig": "product_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "DELETE",
 								"orig": "/shop/v2/products/{productId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"productId": "product_id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "shop",
@@ -131,20 +114,37 @@ func MakeConfig() map[string]any {
 										"var": "product_id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"product_id",
+								"parts": []any{
+									"shop",
+									"v2",
+									"products",
+									"{product_id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"productId": "product_id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"shop",
-									"v2",
-									"products",
-									"{product_id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "product_id",
+											"orig": "product_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 22,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"product_id",
+									},
 								},
 							},
 						},
@@ -153,7 +153,7 @@ func MakeConfig() map[string]any {
 				"relations": map[string]any{
 					"ancestors": []any{
 						[]any{
-							"product",
+							"$.main.kit.entity.product",
 						},
 					},
 				},
@@ -162,11 +162,14 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "id",
-						"short": "Eindeutige ID des Produkts",
+						"title": "Id",
 						"type": "`$INTEGER`",
+						"short": "Eindeutige ID des Produkts",
 					},
 					map[string]any{
 						"name": "name",
+						"title": "Name",
+						"type": "`$STRING`",
 						"op": map[string]any{
 							"create": map[string]any{
 								"req": true,
@@ -178,11 +181,11 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "Name des Produkts",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "double",
 						"name": "price",
+						"title": "Price",
+						"type": "`$NUMBER`",
 						"op": map[string]any{
 							"create": map[string]any{
 								"req": true,
@@ -194,12 +197,13 @@ func MakeConfig() map[string]any {
 							},
 						},
 						"short": "Preis des Produkts",
-						"type": "`$NUMBER`",
+						"format": "double",
 					},
 					map[string]any{
 						"name": "self_link",
-						"short": "Selbstreferenz-Link zur Ressource",
+						"title": "Self Link",
 						"type": "`$STRING`",
+						"short": "Selbstreferenz-Link zur Ressource",
 					},
 				},
 				"id": map[string]any{
@@ -213,7 +217,6 @@ func MakeConfig() map[string]any {
 						"name": "create",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "POST",
 								"orig": "/shop/v2/products/",
@@ -228,16 +231,18 @@ func MakeConfig() map[string]any {
 										"lit": "products",
 									},
 								},
-								"select": map[string]any{},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
 								"parts": []any{
 									"shop",
 									"v2",
 									"products",
 								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -246,26 +251,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": 22,
-											"kind": "param",
-											"name": "id",
-											"orig": "product_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/shop/v2/products/{productId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"productId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "shop",
@@ -280,20 +268,37 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"shop",
+									"v2",
+									"products",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"productId": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"shop",
-									"v2",
-									"products",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "product_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 22,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -303,26 +308,9 @@ func MakeConfig() map[string]any {
 						"name": "patch",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": 22,
-											"kind": "param",
-											"name": "id",
-											"orig": "product_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PATCH",
 								"orig": "/shop/v2/products/{productId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"productId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "shop",
@@ -337,20 +325,37 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"shop",
+									"v2",
+									"products",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"productId": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"shop",
-									"v2",
-									"products",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "product_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 22,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -360,26 +365,9 @@ func MakeConfig() map[string]any {
 						"name": "update",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": 22,
-											"kind": "param",
-											"name": "id",
-											"orig": "product_id",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "PUT",
 								"orig": "/shop/v2/products/{productId}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"productId": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "shop",
@@ -394,20 +382,37 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"shop",
+									"v2",
+									"products",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"productId": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"shop",
-									"v2",
-									"products",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "product_id",
+											"type": "`$INTEGER`",
+											"kind": "param",
+											"reqd": true,
+											"example": 22,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},

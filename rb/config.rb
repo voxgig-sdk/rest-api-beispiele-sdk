@@ -105,26 +105,9 @@ module RestApiBeispieleConfig
               "name" => "remove",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => 22,
-                        "kind" => "param",
-                        "name" => "product_id",
-                        "orig" => "product_id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "DELETE",
                   "orig" => "/shop/v2/products/{productId}",
-                  "rename" => {
-                    "param" => {
-                      "productId" => "product_id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "shop",
@@ -139,21 +122,38 @@ module RestApiBeispieleConfig
                       "var" => "product_id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "product_id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "shop",
                     "v2",
                     "products",
                     "{product_id}",
                   ],
+                  "rename" => {
+                    "param" => {
+                      "productId" => "product_id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "product_id",
+                        "orig" => "product_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => 22,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "product_id",
+                    ],
+                  },
                 },
               ],
             },
@@ -161,7 +161,7 @@ module RestApiBeispieleConfig
           "relations" => {
             "ancestors" => [
               [
-                "product",
+                "$.main.kit.entity.product",
               ],
             ],
           },
@@ -170,11 +170,14 @@ module RestApiBeispieleConfig
           "fields" => [
             {
               "name" => "id",
-              "short" => "Eindeutige ID des Produkts",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "Eindeutige ID des Produkts",
             },
             {
               "name" => "name",
+              "title" => "Name",
+              "type" => "`$STRING`",
               "op" => {
                 "create" => {
                   "req" => true,
@@ -186,11 +189,11 @@ module RestApiBeispieleConfig
                 },
               },
               "short" => "Name des Produkts",
-              "type" => "`$STRING`",
             },
             {
-              "format" => "double",
               "name" => "price",
+              "title" => "Price",
+              "type" => "`$NUMBER`",
               "op" => {
                 "create" => {
                   "req" => true,
@@ -202,12 +205,13 @@ module RestApiBeispieleConfig
                 },
               },
               "short" => "Preis des Produkts",
-              "type" => "`$NUMBER`",
+              "format" => "double",
             },
             {
               "name" => "self_link",
-              "short" => "Selbstreferenz-Link zur Ressource",
+              "title" => "Self Link",
               "type" => "`$STRING`",
+              "short" => "Selbstreferenz-Link zur Ressource",
             },
           ],
           "id" => {
@@ -221,7 +225,6 @@ module RestApiBeispieleConfig
               "name" => "create",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/shop/v2/products/",
@@ -236,16 +239,18 @@ module RestApiBeispieleConfig
                       "lit" => "products",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "shop",
                     "v2",
                     "products",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -254,26 +259,9 @@ module RestApiBeispieleConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => 22,
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "product_id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/shop/v2/products/{productId}",
-                  "rename" => {
-                    "param" => {
-                      "productId" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "shop",
@@ -288,21 +276,38 @@ module RestApiBeispieleConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "shop",
                     "v2",
                     "products",
                     "{id}",
                   ],
+                  "rename" => {
+                    "param" => {
+                      "productId" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "product_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => 22,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -311,26 +316,9 @@ module RestApiBeispieleConfig
               "name" => "patch",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => 22,
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "product_id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "PATCH",
                   "orig" => "/shop/v2/products/{productId}",
-                  "rename" => {
-                    "param" => {
-                      "productId" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "shop",
@@ -345,21 +333,38 @@ module RestApiBeispieleConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "shop",
                     "v2",
                     "products",
                     "{id}",
                   ],
+                  "rename" => {
+                    "param" => {
+                      "productId" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "product_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => 22,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },
@@ -368,26 +373,9 @@ module RestApiBeispieleConfig
               "name" => "update",
               "points" => [
                 {
-                  "args" => {
-                    "params" => [
-                      {
-                        "example" => 22,
-                        "kind" => "param",
-                        "name" => "id",
-                        "orig" => "product_id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "PUT",
                   "orig" => "/shop/v2/products/{productId}",
-                  "rename" => {
-                    "param" => {
-                      "productId" => "id",
-                    },
-                  },
                   "segments" => [
                     {
                       "lit" => "shop",
@@ -402,21 +390,38 @@ module RestApiBeispieleConfig
                       "var" => "id",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "shop",
                     "v2",
                     "products",
                     "{id}",
                   ],
+                  "rename" => {
+                    "param" => {
+                      "productId" => "id",
+                    },
+                  },
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "id",
+                        "orig" => "product_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                        "example" => 22,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "id",
+                    ],
+                  },
                 },
               ],
             },

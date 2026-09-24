@@ -1,0 +1,73 @@
+# Entity: delete
+
+main: kit: entity: delete: {
+
+  alias: field: {}
+
+  name: "delete"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /shop/v2/products/{productId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 22
+                k: "param"
+                n: "product_id"
+                or: "product_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/shop/v2/products/{productId}"
+          q: {
+            exist: [
+              "product_id"
+            ]
+          }
+          r: {
+            param: {
+              productId: "product_id"
+            }
+          }
+          s: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "product_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.product")]
+  ]
+
+}

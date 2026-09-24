@@ -1,0 +1,261 @@
+# Entity: product
+
+main: kit: entity: product: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Eindeutige ID des Produkts"
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Name des Produkts"
+      t: "`$STRING`"
+    }
+    price: {
+      fo: "double"
+      h: "Price"
+      n: "price"
+      op: {
+        create: {
+          req: true
+          type: "`$NUMBER`"
+        }
+        update: {
+          req: true
+          type: "`$NUMBER`"
+        }
+      }
+      r: false
+      sh: "Preis des Produkts"
+      t: "`$NUMBER`"
+    }
+    self_link: {
+      h: "Self Link"
+      n: "self_link"
+      r: false
+      sh: "Selbstreferenz-Link zur Ressource"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "product"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /shop/v2/products/"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/shop/v2/products/"
+          s: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /shop/v2/products/{productId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 22
+                k: "param"
+                n: "id"
+                or: "product_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/shop/v2/products/{productId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              productId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /shop/v2/products/{productId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 22
+                k: "param"
+                n: "id"
+                or: "product_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/shop/v2/products/{productId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              productId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /shop/v2/products/{productId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 22
+                k: "param"
+                n: "id"
+                or: "product_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/shop/v2/products/{productId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              productId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "shop"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "products"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

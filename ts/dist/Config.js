@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -120,26 +113,9 @@ class Config {
                     "name": "remove",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": 22,
-                                        "kind": "param",
-                                        "name": "product_id",
-                                        "orig": "product_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "DELETE",
                             "orig": "/shop/v2/products/{productId}",
-                            "rename": {
-                                "param": {
-                                    "productId": "product_id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "shop"
@@ -154,21 +130,38 @@ class Config {
                                     "var": "product_id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "product_id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "shop",
                                 "v2",
                                 "products",
                                 "{product_id}"
-                            ]
+                            ],
+                            "rename": {
+                                "param": {
+                                    "productId": "product_id"
+                                }
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "product_id",
+                                        "orig": "product_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": 22
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "product_id"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -176,7 +169,7 @@ class Config {
             "relations": {
                 "ancestors": [
                     [
-                        "product"
+                        "$.main.kit.entity.product"
                     ]
                 ]
             }
@@ -185,11 +178,14 @@ class Config {
             "fields": [
                 {
                     "name": "id",
-                    "short": "Eindeutige ID des Produkts",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "Eindeutige ID des Produkts"
                 },
                 {
                     "name": "name",
+                    "title": "Name",
+                    "type": "`$STRING`",
                     "op": {
                         "create": {
                             "req": true,
@@ -200,12 +196,12 @@ class Config {
                             "type": "`$STRING`"
                         }
                     },
-                    "short": "Name des Produkts",
-                    "type": "`$STRING`"
+                    "short": "Name des Produkts"
                 },
                 {
-                    "format": "double",
                     "name": "price",
+                    "title": "Price",
+                    "type": "`$NUMBER`",
                     "op": {
                         "create": {
                             "req": true,
@@ -217,12 +213,13 @@ class Config {
                         }
                     },
                     "short": "Preis des Produkts",
-                    "type": "`$NUMBER`"
+                    "format": "double"
                 },
                 {
                     "name": "self_link",
-                    "short": "Selbstreferenz-Link zur Ressource",
-                    "type": "`$STRING`"
+                    "title": "Self Link",
+                    "type": "`$STRING`",
+                    "short": "Selbstreferenz-Link zur Ressource"
                 }
             ],
             "id": {
@@ -236,7 +233,6 @@ class Config {
                     "name": "create",
                     "points": [
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "POST",
                             "orig": "/shop/v2/products/",
@@ -251,16 +247,18 @@ class Config {
                                     "lit": "products"
                                 }
                             ],
-                            "select": {},
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "shop",
                                 "v2",
                                 "products"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 },
@@ -269,26 +267,9 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": 22,
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "product_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/shop/v2/products/{productId}",
-                            "rename": {
-                                "param": {
-                                    "productId": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "shop"
@@ -303,21 +284,38 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "shop",
                                 "v2",
                                 "products",
                                 "{id}"
-                            ]
+                            ],
+                            "rename": {
+                                "param": {
+                                    "productId": "id"
+                                }
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "product_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": 22
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 },
@@ -326,26 +324,9 @@ class Config {
                     "name": "patch",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": 22,
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "product_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "PATCH",
                             "orig": "/shop/v2/products/{productId}",
-                            "rename": {
-                                "param": {
-                                    "productId": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "shop"
@@ -360,21 +341,38 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "shop",
                                 "v2",
                                 "products",
                                 "{id}"
-                            ]
+                            ],
+                            "rename": {
+                                "param": {
+                                    "productId": "id"
+                                }
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "product_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": 22
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 },
@@ -383,26 +381,9 @@ class Config {
                     "name": "update",
                     "points": [
                         {
-                            "args": {
-                                "params": [
-                                    {
-                                        "example": 22,
-                                        "kind": "param",
-                                        "name": "id",
-                                        "orig": "product_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "PUT",
                             "orig": "/shop/v2/products/{productId}",
-                            "rename": {
-                                "param": {
-                                    "productId": "id"
-                                }
-                            },
                             "segments": [
                                 {
                                     "lit": "shop"
@@ -417,21 +398,38 @@ class Config {
                                     "var": "id"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "shop",
                                 "v2",
                                 "products",
                                 "{id}"
-                            ]
+                            ],
+                            "rename": {
+                                "param": {
+                                    "productId": "id"
+                                }
+                            },
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "id",
+                                        "orig": "product_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true,
+                                        "example": 22
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
                         }
                     ]
                 }

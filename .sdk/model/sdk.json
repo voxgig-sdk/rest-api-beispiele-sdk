@@ -24,13 +24,79 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "delete": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [],
+          "fields": {},
           "name": "delete",
           "op": {
             "remove": {
@@ -38,35 +104,39 @@
               "name": "remove",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /shop/v2/products/{productId}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": 22,
-                        "kind": "param",
-                        "name": "product_id",
-                        "orig": "product_id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 22,
+                        "k": "param",
+                        "n": "product_id",
+                        "or": "product_id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "DELETE /shop/v2/products/{productId}",
-                    "json": "{\"operationId\":\"deleteProduct\",\"parameters\":[{\"description\":\"Die ID des Produkts\",\"in\":\"path\",\"name\":\"productId\",\"required\":true,\"schema\":{\"example\":22,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"success\":\"Deleted\"},\"schema\":{\"properties\":{\"success\":{\"description\":\"Bestätigung der erfolgreichen Löschung\",\"example\":\"Deleted\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"OK - Produkt wurde erfolgreich gelöscht\"},\"404\":{\"description\":\"Not Found - Produkt nicht gefunden\"},\"500\":{\"description\":\"Internal Server Error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/shop/v2/products/{productId}",
+                  "q": {
+                    "exist": [
+                      "product_id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "DELETE",
-                  "orig": "/shop/v2/products/{productId}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "productId": "product_id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "shop"
                     },
@@ -80,12 +150,7 @@
                       "var": "product_id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "product_id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -96,7 +161,7 @@
           "relations": {
             "ancestors": [
               [
-                "product"
+                "$.main.kit.entity.product"
               ]
             ]
           }
@@ -106,17 +171,19 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "Eindeutige ID des Produkts",
-              "type": "`$INTEGER`"
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "Eindeutige ID des Produkts",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "name",
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
               "op": {
                 "create": {
                   "req": true,
@@ -127,14 +194,15 @@
                   "type": "`$STRING`"
                 }
               },
-              "req": false,
-              "short": "Name des Produkts",
-              "type": "`$STRING`"
+              "r": false,
+              "sh": "Name des Produkts",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "double",
-              "name": "price",
+            "price": {
+              "a": true,
+              "fo": "double",
+              "h": "Price",
+              "n": "price",
               "op": {
                 "create": {
                   "req": true,
@@ -145,18 +213,19 @@
                   "type": "`$NUMBER`"
                 }
               },
-              "req": false,
-              "short": "Preis des Produkts",
-              "type": "`$NUMBER`"
+              "r": false,
+              "sh": "Preis des Produkts",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "self_link",
-              "req": false,
-              "short": "Selbstreferenz-Link zur Ressource",
-              "type": "`$STRING`"
+            "self_link": {
+              "a": true,
+              "h": "Self Link",
+              "n": "self_link",
+              "r": false,
+              "sh": "Selbstreferenz-Link zur Ressource",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -168,18 +237,19 @@
               "name": "create",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "POST /shop/v2/products/",
-                    "json": "{\"operationId\":\"createProduct\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":{\"name\":\"Wild-berries\",\"price\":4.99},\"schema\":{\"properties\":{\"name\":{\"description\":\"Name des Produkts\",\"example\":\"Wild-berries\",\"type\":\"string\"},\"price\":{\"description\":\"Preis des Produkts\",\"example\":4.99,\"format\":\"double\",\"minimum\":0,\"type\":\"number\"}},\"required\":[\"name\",\"price\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"example\":{\"id\":22,\"name\":\"Wild-berries\",\"price\":4.99,\"self_link\":\"/shop/v2/products/22\"},\"schema\":{\"properties\":{\"id\":{\"description\":\"Eindeutige ID des Produkts\",\"example\":22,\"type\":\"integer\"},\"name\":{\"description\":\"Name des Produkts\",\"example\":\"Wild-berries\",\"type\":\"string\"},\"price\":{\"description\":\"Preis des Produkts\",\"example\":4.99,\"format\":\"double\",\"minimum\":0,\"type\":\"number\"},\"self_link\":{\"description\":\"Selbstreferenz-Link zur Ressource\",\"example\":\"/shop/v2/products/22\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Created - Produkt wurde erfolgreich angelegt\",\"headers\":{\"Location\":{\"description\":\"URI der neu angelegten Ressource\",\"schema\":{\"example\":\"/shop/v2/products/22\",\"type\":\"string\"}}}},\"400\":{\"description\":\"Bad Request - Ungültige Eingabedaten\"},\"500\":{\"description\":\"Internal Server Error\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "POST",
-                  "orig": "/shop/v2/products/",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/shop/v2/products/",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "shop"
                     },
@@ -190,8 +260,7 @@
                       "lit": "products"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -203,35 +272,39 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /shop/v2/products/{productId}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": 22,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "product_id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 22,
+                        "k": "param",
+                        "n": "id",
+                        "or": "product_id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /shop/v2/products/{productId}",
-                    "json": "{\"operationId\":\"getProduct\",\"parameters\":[{\"description\":\"Die ID des Produkts\",\"in\":\"path\",\"name\":\"productId\",\"required\":true,\"schema\":{\"example\":22,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"id\":22,\"name\":\"Wild-berries\",\"price\":4.99,\"self_link\":\"/shop/v2/products/22\"},\"schema\":{\"properties\":{\"id\":{\"description\":\"Eindeutige ID des Produkts\",\"example\":22,\"type\":\"integer\"},\"name\":{\"description\":\"Name des Produkts\",\"example\":\"Wild-berries\",\"type\":\"string\"},\"price\":{\"description\":\"Preis des Produkts\",\"example\":4.99,\"format\":\"double\",\"minimum\":0,\"type\":\"number\"},\"self_link\":{\"description\":\"Selbstreferenz-Link zur Ressource\",\"example\":\"/shop/v2/products/22\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"OK - Produkt erfolgreich abgerufen\"},\"404\":{\"description\":\"Not Found - Produkt nicht gefunden\"},\"500\":{\"description\":\"Internal Server Error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/shop/v2/products/{productId}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/shop/v2/products/{productId}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "productId": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "shop"
                     },
@@ -245,12 +318,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -262,35 +330,39 @@
               "name": "patch",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "PATCH /shop/v2/products/{productId}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": 22,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "product_id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 22,
+                        "k": "param",
+                        "n": "id",
+                        "or": "product_id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "PATCH /shop/v2/products/{productId}",
-                    "json": "{\"operationId\":\"partialUpdateProduct\",\"parameters\":[{\"description\":\"Die ID des Produkts\",\"in\":\"path\",\"name\":\"productId\",\"required\":true,\"schema\":{\"example\":22,\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":{\"price\":1.99},\"schema\":{\"description\":\"Objekt für partielle Aktualisierung. Nur die zu ändernden Felder müssen angegeben werden.\",\"properties\":{\"name\":{\"description\":\"Name des Produkts\",\"example\":\"Wild-berries\",\"type\":\"string\"},\"price\":{\"description\":\"Preis des Produkts\",\"example\":1.99,\"format\":\"double\",\"minimum\":0,\"type\":\"number\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"id\":22,\"name\":\"Wild-berries\",\"price\":1.99},\"schema\":{\"properties\":{\"id\":{\"description\":\"Eindeutige ID des Produkts\",\"example\":22,\"type\":\"integer\"},\"name\":{\"description\":\"Name des Produkts\",\"example\":\"Wild-berries\",\"type\":\"string\"},\"price\":{\"description\":\"Preis des Produkts\",\"example\":4.99,\"format\":\"double\",\"minimum\":0,\"type\":\"number\"},\"self_link\":{\"description\":\"Selbstreferenz-Link zur Ressource\",\"example\":\"/shop/v2/products/22\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"OK - Produkt wurde erfolgreich teilweise aktualisiert\"},\"400\":{\"description\":\"Bad Request - Ungültige Eingabedaten\"},\"404\":{\"description\":\"Not Found - Produkt nicht gefunden\"},\"500\":{\"description\":\"Internal Server Error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "PATCH",
+                  "o": "/shop/v2/products/{productId}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "PATCH",
-                  "orig": "/shop/v2/products/{productId}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "productId": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "shop"
                     },
@@ -304,12 +376,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -321,35 +388,39 @@
               "name": "update",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "PUT /shop/v2/products/{productId}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": 22,
-                        "kind": "param",
-                        "name": "id",
-                        "orig": "product_id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "ex": 22,
+                        "k": "param",
+                        "n": "id",
+                        "or": "product_id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "PUT /shop/v2/products/{productId}",
-                    "json": "{\"operationId\":\"updateProduct\",\"parameters\":[{\"description\":\"Die ID des Produkts\",\"in\":\"path\",\"name\":\"productId\",\"required\":true,\"schema\":{\"example\":22,\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":{\"name\":\"Wild-berries\",\"price\":2.99},\"schema\":{\"properties\":{\"name\":{\"description\":\"Name des Produkts\",\"example\":\"Wild-berries\",\"type\":\"string\"},\"price\":{\"description\":\"Preis des Produkts\",\"example\":4.99,\"format\":\"double\",\"minimum\":0,\"type\":\"number\"}},\"required\":[\"name\",\"price\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"id\":22,\"name\":\"Wild-berries\",\"price\":2.99,\"self_link\":\"/shop/v2/products/22\"},\"schema\":{\"properties\":{\"id\":{\"description\":\"Eindeutige ID des Produkts\",\"example\":22,\"type\":\"integer\"},\"name\":{\"description\":\"Name des Produkts\",\"example\":\"Wild-berries\",\"type\":\"string\"},\"price\":{\"description\":\"Preis des Produkts\",\"example\":4.99,\"format\":\"double\",\"minimum\":0,\"type\":\"number\"},\"self_link\":{\"description\":\"Selbstreferenz-Link zur Ressource\",\"example\":\"/shop/v2/products/22\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"OK - Produkt wurde erfolgreich aktualisiert\"},\"400\":{\"description\":\"Bad Request - Ungültige Eingabedaten\"},\"404\":{\"description\":\"Not Found - Produkt nicht gefunden\"},\"500\":{\"description\":\"Internal Server Error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "PUT",
+                  "o": "/shop/v2/products/{productId}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "PUT",
-                  "orig": "/shop/v2/products/{productId}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "productId": "id"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "lit": "shop"
                     },
@@ -363,12 +434,7 @@
                       "var": "id"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -806,28 +872,28 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "product_ref01"
               },
-              "match": {},
-              "op": "create",
-              "spec": [],
-              "valid": []
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "product_ref01",
                 "srcdatavar": "product_ref01_data",
                 "suffix": "_up0",
                 "textfield": "name"
               },
-              "match": {},
-              "op": "update",
-              "spec": [
+              "m": {},
+              "o": "update",
+              "s": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -835,22 +901,22 @@
                   }
                 }
               ],
-              "valid": []
+              "v": []
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "product_ref01",
                 "srcdatavar": "product_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {
+              "m": {
                 "id": "product01"
               },
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
