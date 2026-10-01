@@ -133,7 +133,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "product_id",
-											"orig": "product_id",
+											"orig": "productId",
 											"type": "`$INTEGER`",
 											"kind": "param",
 											"reqd": true,
@@ -287,7 +287,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "id",
-											"orig": "product_id",
+											"orig": "productId",
 											"type": "`$INTEGER`",
 											"kind": "param",
 											"reqd": true,
@@ -344,7 +344,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "id",
-											"orig": "product_id",
+											"orig": "productId",
 											"type": "`$INTEGER`",
 											"kind": "param",
 											"reqd": true,
@@ -401,7 +401,7 @@ func MakeConfig() map[string]any {
 									"params": []any{
 										map[string]any{
 											"name": "id",
-											"orig": "product_id",
+											"orig": "productId",
 											"type": "`$INTEGER`",
 											"kind": "param",
 											"reqd": true,

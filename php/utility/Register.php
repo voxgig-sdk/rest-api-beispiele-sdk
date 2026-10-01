@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 RestApiBeispieleUtility::setRegistrar(function (RestApiBeispieleUtility $u): void {
     $u->clean = [RestApiBeispieleClean::class, 'call'];
+    $u->clean_add = [RestApiBeispieleClean::class, 'add'];
+    $u->clean_explain = [RestApiBeispieleDone::class, 'clean_explain'];
     $u->done = [RestApiBeispieleDone::class, 'call'];
     $u->make_error = [RestApiBeispieleMakeError::class, 'call'];
     $u->feature_add = [RestApiBeispieleFeatureAdd::class, 'call'];

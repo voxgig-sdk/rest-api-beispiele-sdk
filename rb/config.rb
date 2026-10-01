@@ -141,7 +141,7 @@ module RestApiBeispieleConfig
                     "params" => [
                       {
                         "name" => "product_id",
-                        "orig" => "product_id",
+                        "orig" => "productId",
                         "type" => "`$INTEGER`",
                         "kind" => "param",
                         "reqd" => true,
@@ -295,7 +295,7 @@ module RestApiBeispieleConfig
                     "params" => [
                       {
                         "name" => "id",
-                        "orig" => "product_id",
+                        "orig" => "productId",
                         "type" => "`$INTEGER`",
                         "kind" => "param",
                         "reqd" => true,
@@ -352,7 +352,7 @@ module RestApiBeispieleConfig
                     "params" => [
                       {
                         "name" => "id",
-                        "orig" => "product_id",
+                        "orig" => "productId",
                         "type" => "`$INTEGER`",
                         "kind" => "param",
                         "reqd" => true,
@@ -409,7 +409,7 @@ module RestApiBeispieleConfig
                     "params" => [
                       {
                         "name" => "id",
-                        "orig" => "product_id",
+                        "orig" => "productId",
                         "type" => "`$INTEGER`",
                         "kind" => "param",
                         "reqd" => true,

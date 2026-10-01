@@ -107,7 +107,7 @@ main: kit: entity: product: {
                 ex: 22
                 k: "param"
                 n: "id"
-                or: "product_id"
+                or: "productId"
                 r: true
                 t: "`$INTEGER`"
               }
@@ -161,7 +161,7 @@ main: kit: entity: product: {
                 ex: 22
                 k: "param"
                 n: "id"
-                or: "product_id"
+                or: "productId"
                 r: true
                 t: "`$INTEGER`"
               }
@@ -215,7 +215,7 @@ main: kit: entity: product: {
                 ex: 22
                 k: "param"
                 n: "id"
-                or: "product_id"
+                or: "productId"
                 r: true
                 t: "`$INTEGER`"
               }

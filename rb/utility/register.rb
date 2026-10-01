@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 RestApiBeispieleUtility.registrar = ->(u) {
   u.clean = RestApiBeispieleUtilities::Clean
+  u.clean_add = RestApiBeispieleUtilities::CleanAdd
+  u.clean_explain = RestApiBeispieleUtilities::CleanExplain
   u.done = RestApiBeispieleUtilities::Done
   u.make_error = RestApiBeispieleUtilities::MakeError
   u.feature_add = RestApiBeispieleUtilities::FeatureAdd

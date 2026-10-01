@@ -149,7 +149,7 @@ class Config {
                                 "params": [
                                     {
                                         "name": "product_id",
-                                        "orig": "product_id",
+                                        "orig": "productId",
                                         "type": "`$INTEGER`",
                                         "kind": "param",
                                         "reqd": true,
@@ -303,7 +303,7 @@ class Config {
                                 "params": [
                                     {
                                         "name": "id",
-                                        "orig": "product_id",
+                                        "orig": "productId",
                                         "type": "`$INTEGER`",
                                         "kind": "param",
                                         "reqd": true,
@@ -360,7 +360,7 @@ class Config {
                                 "params": [
                                     {
                                         "name": "id",
-                                        "orig": "product_id",
+                                        "orig": "productId",
                                         "type": "`$INTEGER`",
                                         "kind": "param",
                                         "reqd": true,
@@ -417,7 +417,7 @@ class Config {
                                 "params": [
                                     {
                                         "name": "id",
-                                        "orig": "product_id",
+                                        "orig": "productId",
                                         "type": "`$INTEGER`",
                                         "kind": "param",
                                         "reqd": true,
