@@ -41,10 +41,8 @@ class ProductLoadMatch
 /** Request payload for Product#create. */
 class ProductCreateData
 {
-    public ?int $id = null;
-    public ?string $name = null;
-    public ?float $price = null;
-    public ?string $self_link = null;
+    public string $name;
+    public float $price;
 }
 
 /** Request payload for Product#update. */
@@ -53,6 +51,13 @@ class ProductUpdateData
     public int $id;
     public ?string $name = null;
     public ?float $price = null;
-    public ?string $self_link = null;
+}
+
+/** Request payload for Product#patch. */
+class ProductPatchData
+{
+    public int $id;
+    public ?string $name = null;
+    public ?float $price = null;
 }
 

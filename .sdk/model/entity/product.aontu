@@ -67,6 +67,10 @@ main: kit: entity: product: {
       name: "create"
       points: [
         {
+          bf: [
+            "name"
+            "price"
+          ]
           co: {
             id: "POST /shop/v2/products/"
             source: "openapi3"
@@ -74,6 +78,10 @@ main: kit: entity: product: {
           }
           m: "POST"
           o: "/shop/v2/products/"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "shop"
@@ -125,6 +133,10 @@ main: kit: entity: product: {
               productId: "id"
             }
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "shop"
@@ -150,6 +162,10 @@ main: kit: entity: product: {
       name: "patch"
       points: [
         {
+          bf: [
+            "name"
+            "price"
+          ]
           co: {
             id: "PATCH /shop/v2/products/{productId}"
             source: "openapi3"
@@ -179,6 +195,10 @@ main: kit: entity: product: {
               productId: "id"
             }
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "shop"
@@ -204,6 +224,10 @@ main: kit: entity: product: {
       name: "update"
       points: [
         {
+          bf: [
+            "name"
+            "price"
+          ]
           co: {
             id: "PUT /shop/v2/products/{productId}"
             source: "openapi3"
@@ -232,6 +256,10 @@ main: kit: entity: product: {
             param: {
               productId: "id"
             }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

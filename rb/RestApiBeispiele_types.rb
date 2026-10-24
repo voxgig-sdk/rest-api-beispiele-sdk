@@ -53,22 +53,14 @@ ProductLoadMatch = Struct.new(
 
 # Request payload for Product#create.
 #
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
 # @!attribute [rw] name
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] price
-#   @return [Float, nil]
-#
-# @!attribute [rw] self_link
-#   @return [String, nil]
+#   @return [Float]
 ProductCreateData = Struct.new(
-  :id,
   :name,
   :price,
-  :self_link,
   keyword_init: true
 )
 
@@ -82,14 +74,27 @@ ProductCreateData = Struct.new(
 #
 # @!attribute [rw] price
 #   @return [Float, nil]
-#
-# @!attribute [rw] self_link
-#   @return [String, nil]
 ProductUpdateData = Struct.new(
   :id,
   :name,
   :price,
-  :self_link,
+  keyword_init: true
+)
+
+# Request payload for Product#patch.
+#
+# @!attribute [rw] id
+#   @return [Integer]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] price
+#   @return [Float, nil]
+ProductPatchData = Struct.new(
+  :id,
+  :name,
+  :price,
   keyword_init: true
 )
 

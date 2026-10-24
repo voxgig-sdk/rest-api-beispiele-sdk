@@ -3,5 +3,20 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Created - Produkt wurde erfolgreich angelegt",
+      "Dieses API bietet Beispiele für REST API Aufrufe, insbesondere für die HTTP Methoden POST, PUT und PATCH. Es dient als Anleitung, um Ressourcen zu erstellen, zu aktualisieren oder zu löschen, wobei ein Beispielservice verwendet wird. Fruit Shop Beispielservice für Produktverwaltung.",
+      "Eindeutige ID des Produkts",
+      "Name des Produkts",
+      "OK - Produkt erfolgreich abgerufen",
+      "OK - Produkt wurde erfolgreich aktualisiert",
+      "OK - Produkt wurde erfolgreich gelöscht",
+      "OK - Produkt wurde erfolgreich teilweise aktualisiert",
+      "Preis des Produkts",
+      "Production server",
+      "Selbstreferenz-Link zur Ressource"
+    ]
+  }
 }

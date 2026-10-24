@@ -23,7 +23,12 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
@@ -40,7 +45,12 @@ const PLAN: any[] = [
     "args": [],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 201,
     "sample": {
@@ -66,7 +76,12 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {
@@ -74,6 +89,36 @@ const PLAN: any[] = [
       "name": "Wild-berries",
       "price": 4.99,
       "self_link": "/shop/v2/products/22"
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "product",
+    "accessor": "Product",
+    "op": "patch",
+    "method": "PATCH",
+    "path": "/shop/v2/products/{productId}",
+    "args": [
+      {
+        "name": "id",
+        "wire": "productId",
+        "value": 22
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": null,
+    "status": 200,
+    "sample": {
+      "id": 22,
+      "name": "Wild-berries",
+      "price": 1.99
     },
     "idField": "id"
   },
@@ -92,7 +137,12 @@ const PLAN: any[] = [
     ],
     "select": {},
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [],
+    "queryArgs": [],
     "auth": null,
     "status": 200,
     "sample": {

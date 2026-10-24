@@ -24,16 +24,19 @@ export interface ProductLoadMatch {
 }
 
 export interface ProductCreateData {
-  id?: number
-  name?: string
-  price?: number
-  self_link?: string
+  name: string
+  price: number
 }
 
 export interface ProductUpdateData {
   id: number
   name?: string
   price?: number
-  self_link?: string
+}
+
+export interface ProductPatchData {
+  id: number
+  name?: string
+  price?: number
 }
 

@@ -89,9 +89,9 @@ delete = client.Delete()
 
 ### Operations
 
-#### `remove(reqmatch, ctrl=None) -> dict`
+#### `remove(reqmatch, ctrl=None) -> DeleteEntity`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
 result = client.Delete().remove({"product_id": 1})
@@ -143,35 +143,48 @@ product = client.Product()
 
 ### Field Usage by Operation
 
-| Field | load | create | update |
-| --- | --- | --- | --- |
-| `id` | - | - | - |
-| `name` | - | Yes | Yes |
-| `price` | - | Yes | Yes |
-| `self_link` | - | - | - |
+| Field | load | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `id` | - | - | - | - |
+| `name` | - | Yes | Yes | - |
+| `price` | - | Yes | Yes | - |
+| `self_link` | - | - | - | - |
 
 ### Operations
 
-#### `create(reqdata, ctrl=None) -> dict`
+#### `create(reqdata, ctrl=None) -> ProductEntity`
 
-Create a new entity with the given data. Returns the created entity data and raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```python
 result = client.Product().create({
+    "name": "example_name",  # str
+    "price": 1,  # float
 })
 ```
 
-#### `load(reqmatch, ctrl=None) -> dict`
+#### `load(reqmatch, ctrl=None) -> ProductEntity`
 
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
 result = client.Product().load({"id": 1})
 ```
 
-#### `update(reqdata, ctrl=None) -> dict`
+#### `patch(reqdata, ctrl=None) -> ProductEntity`
 
-Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```python
+result = client.Product().patch({
+    "id": 1,
+    # Only the fields to change
+})
+```
+
+#### `update(reqdata, ctrl=None) -> ProductEntity`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ```python
 result = client.Product().update({
@@ -366,6 +379,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

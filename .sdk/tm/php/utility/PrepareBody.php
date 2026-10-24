@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // RestApiBeispiele SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class RestApiBeispielePrepareBody
 {
     public static function call(RestApiBeispieleContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (RestApiBeispieleMedia::isRawRequest($ctx->point)) {
+                return RestApiBeispieleMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform

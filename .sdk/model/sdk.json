@@ -136,6 +136,10 @@
                       "productId": "product_id"
                     }
                   },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "shop"
@@ -238,6 +242,10 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "name",
+                    "price"
+                  ],
                   "co": {
                     "id": "POST /shop/v2/products/",
                     "source": "openapi3",
@@ -249,6 +257,10 @@
                   "o": "/shop/v2/products/",
                   "q": {},
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "shop"
@@ -304,6 +316,10 @@
                       "productId": "id"
                     }
                   },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "shop"
@@ -331,6 +347,10 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "name",
+                    "price"
+                  ],
                   "co": {
                     "id": "PATCH /shop/v2/products/{productId}",
                     "source": "openapi3",
@@ -362,6 +382,10 @@
                       "productId": "id"
                     }
                   },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "shop"
@@ -389,6 +413,10 @@
               "points": [
                 {
                   "a": true,
+                  "bf": [
+                    "name",
+                    "price"
+                  ],
                   "co": {
                     "id": "PUT /shop/v2/products/{productId}",
                     "source": "openapi3",
@@ -419,6 +447,10 @@
                     "param": {
                       "productId": "id"
                     }
+                  },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
                   },
                   "s": [
                     {
@@ -769,6 +801,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -955,7 +988,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -1008,6 +1041,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -1238,7 +1276,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1615,6 +1656,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

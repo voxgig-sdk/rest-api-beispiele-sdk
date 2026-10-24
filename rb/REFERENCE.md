@@ -97,7 +97,7 @@ delete = client.Delete
 
 #### `remove(reqmatch, ctrl = nil) -> result`
 
-Remove the entity matching the given criteria. Raises on error.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
 result = client.Delete.remove({ "product_id" => 1 })
@@ -150,35 +150,48 @@ product = client.Product
 
 ### Field Usage by Operation
 
-| Field | load | create | update |
-| --- | --- | --- | --- |
-| `id` | - | - | - |
-| `name` | - | Yes | Yes |
-| `price` | - | Yes | Yes |
-| `self_link` | - | - | - |
+| Field | load | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `id` | - | - | - | - |
+| `name` | - | Yes | Yes | - |
+| `price` | - | Yes | Yes | - |
+| `self_link` | - | - | - | - |
 
 ### Operations
 
 #### `create(reqdata, ctrl = nil) -> result`
 
-Create a new entity with the given data. Raises on error.
+Create a new entity with the given data. Returns the created entity and raises on error.
 
 ```ruby
 result = client.Product.create({
+  "name" => "example_name", # String
+  "price" => 1, # Float
 })
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
 result = client.Product.load({ "id" => 1 })
 ```
 
+#### `patch(reqdata, ctrl = nil) -> result`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity and raises on error.
+
+```ruby
+result = client.Product.patch({
+  "id" => 1,
+  # Only the fields to change
+})
+```
+
 #### `update(reqdata, ctrl = nil) -> result`
 
-Update an existing entity. The data must include the entity `id`. Raises on error.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity and raises on error.
 
 ```ruby
 result = client.Product.update({
@@ -374,6 +387,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

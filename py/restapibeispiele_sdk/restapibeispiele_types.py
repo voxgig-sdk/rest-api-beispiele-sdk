@@ -35,11 +35,9 @@ class ProductLoadMatch(TypedDict):
     id: int
 
 
-class ProductCreateData(TypedDict, total=False):
-    id: int
+class ProductCreateData(TypedDict):
     name: str
     price: float
-    self_link: str
 
 
 class ProductUpdateDataRequired(TypedDict):
@@ -49,4 +47,12 @@ class ProductUpdateDataRequired(TypedDict):
 class ProductUpdateData(ProductUpdateDataRequired, total=False):
     name: str
     price: float
-    self_link: str
+
+
+class ProductPatchDataRequired(TypedDict):
+    id: int
+
+
+class ProductPatchData(ProductPatchDataRequired, total=False):
+    name: str
+    price: float

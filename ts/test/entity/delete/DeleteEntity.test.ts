@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { RestApiBeispieleSDK, BaseFeature, stdutil } from '../../..'
+import { RestApiBeispieleSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,18 @@ describe('DeleteEntity', async () => {
   })
 
 
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = RestApiBeispieleSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Delete().remove({"product_id":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.REST_API_BEISPIELE_TEST_LIVE
@@ -51,7 +63,7 @@ describe('DeleteEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"delete","op":{"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /shop/v2/products/{productId}","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":22,"k":"param","n":"product_id","or":"productId","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"DELETE","o":"/shop/v2/products/{productId}","q":{"exist":["product_id"]},"r":{"param":{"productId":"product_id"}},"s":[{"lit":"shop"},{"lit":"v2"},{"lit":"products"},{"var":"product_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[["$.main.kit.entity.product"]]},"key$":"delete","name__orig":"delete","Name":"Delete","name_":"delete","name-":"delete","NAME":"DELETE","index$":0}, {"active":true,"entity":"delete","key$":"BasicDeleteFlow","kind":"basic","name":"BasicDeleteFlow","param":{},"step":[]}, 'Delete', {"DELETE /shop/v2/products/{productId}":{"protocol":"http","parameters":[{"name":"productId","in":"path","required":true,"description":"Die ID des Produkts","schema":{"type":"integer","example":22},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"delete","op":{"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /shop/v2/products/{productId}","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":22,"k":"param","n":"product_id","or":"productId","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"DELETE","o":"/shop/v2/products/{productId}","q":{"exist":["product_id"]},"r":{"param":{"productId":"product_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"shop"},{"lit":"v2"},{"lit":"products"},{"var":"product_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[["$.main.kit.entity.product"]]},"key$":"delete","name__orig":"delete","Name":"Delete","name_":"delete","name-":"delete","NAME":"DELETE","index$":0}, {"active":true,"entity":"delete","key$":"BasicDeleteFlow","kind":"basic","name":"BasicDeleteFlow","param":{},"step":[]}, 'Delete', {"DELETE /shop/v2/products/{productId}":{"protocol":"http","parameters":[{"name":"productId","in":"path","required":true,"description":"Die ID des Produkts","schema":{"type":"integer","example":22},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -65,6 +77,12 @@ describe('DeleteEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

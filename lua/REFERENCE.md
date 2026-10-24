@@ -94,7 +94,7 @@ local delete = client:Delete(nil)
 
 #### `remove(reqmatch, ctrl) -> any, err`
 
-Remove the entity matching the given criteria.
+Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Delete():remove({ product_id = 1 })
@@ -147,35 +147,48 @@ local product = client:Product(nil)
 
 ### Field Usage by Operation
 
-| Field | load | create | update |
-| --- | --- | --- | --- |
-| `id` | - | - | - |
-| `name` | - | Yes | Yes |
-| `price` | - | Yes | Yes |
-| `self_link` | - | - | - |
+| Field | load | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `id` | - | - | - | - |
+| `name` | - | Yes | Yes | - |
+| `price` | - | Yes | Yes | - |
+| `self_link` | - | - | - | - |
 
 ### Operations
 
 #### `create(reqdata, ctrl) -> any, err`
 
-Create a new entity with the given data.
+Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Product():create({
+  name = --[[ string ]],
+  price = --[[ number ]],
 })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Product():load({ id = 1 })
 ```
 
+#### `patch(reqdata, ctrl) -> any, err`
+
+Change part of an existing entity: only the fields given are sent. The data must include the entity `id`. Returns the patched entity, or `nil` and an error on failure.
+
+```lua
+local result, err = client:Product():patch({
+  id = 1,
+  -- Only the fields to change
+})
+```
+
 #### `update(reqdata, ctrl) -> any, err`
 
-Update an existing entity. The data must include the entity `id`.
+Update an existing entity. The data must include the entity `id`. Returns the updated entity, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Product():update({
@@ -371,6 +384,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

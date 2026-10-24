@@ -32,10 +32,8 @@ type ProductLoadMatch struct {
 
 // ProductCreateData is the typed request payload for Product.CreateTyped.
 type ProductCreateData struct {
-	Id *int `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	SelfLink *string `json:"self_link,omitempty"`
+	Name string `json:"name"`
+	Price float64 `json:"price"`
 }
 
 // ProductUpdateData is the typed request payload for Product.UpdateTyped.
@@ -43,7 +41,13 @@ type ProductUpdateData struct {
 	Id int `json:"id"`
 	Name *string `json:"name,omitempty"`
 	Price *float64 `json:"price,omitempty"`
-	SelfLink *string `json:"self_link,omitempty"`
+}
+
+// ProductPatchData is the typed request payload for Product.PatchTyped.
+type ProductPatchData struct {
+	Id int `json:"id"`
+	Name *string `json:"name,omitempty"`
+	Price *float64 `json:"price,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

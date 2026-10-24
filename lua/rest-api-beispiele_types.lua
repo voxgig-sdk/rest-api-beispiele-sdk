@@ -21,16 +21,18 @@
 ---@field id number
 
 ---@class ProductCreateData
----@field id? number
----@field name? string
----@field price? number
----@field self_link? string
+---@field name string
+---@field price number
 
 ---@class ProductUpdateData
 ---@field id number
 ---@field name? string
 ---@field price? number
----@field self_link? string
+
+---@class ProductPatchData
+---@field id number
+---@field name? string
+---@field price? number
 
 local M = {}
 

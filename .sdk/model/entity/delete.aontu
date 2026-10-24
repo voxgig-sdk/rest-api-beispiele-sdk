@@ -39,6 +39,10 @@ main: kit: entity: delete: {
               productId: "product_id"
             }
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "shop"
